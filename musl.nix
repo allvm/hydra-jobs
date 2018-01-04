@@ -197,6 +197,14 @@ let
     zip = all;
   };
 
+  # XXX: Move elsewhere
+  compilers = {
+    gcc = all;
+    gcc7 = all;
+    clang_4 = all;
+    clang_5 = all;
+  };
+
   /* Cross-built bootstrap tools for every supported platform */
   bootstrapTools = let
     tools = import "${nixpkgs}/pkgs/stdenv/linux/make-bootstrap-tools-cross.nix" { system = "x86_64-linux"; };
@@ -210,6 +218,7 @@ in
 {
   linuxCommon = mapTestOnCross lib.systems.examples.musl64 linuxCommon;
   small = mapTestOnCross lib.systems.examples.musl64 small;
+  compilers = mapTestOnCross lib.systems.examples.musl64 compilers;
 
   bootstrapTools = bootstrapTools.musl;
 }
