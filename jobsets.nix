@@ -2,6 +2,12 @@
 
 let
   pkgs = import nixpkgs {};
+  gitlab = let
+    inherit (pkgs) lib;
+    gitlabURL = "git@gitlab.engr.illinois.edu";
+    gitlabGenURL = { group ? "llvm", repo, branch ? null }:
+      "${gitlabURL}:${group}/${repo}" + lib.optionalString (branch != null) " ${branch}";
+    in args: lib.makeOverridable (a: { type = "git"; value = gitlabGenURL a; }) args;
   defaultSettings = {
     enabled = "1";
     hidden = false;
@@ -12,10 +18,7 @@ let
     shares = 42;
     interval = 300;
     inputs = {
-      jobs = {
-        type = "git";
-        value = "git@gitlab.engr.illinois.edu:dtz/hydra-jobs";
-      };
+      jobs = gitlab { group = "dtz"; repo = "hydra-jobs"; };
       nixpkgs = {
         type = "git";
         value = "git://github.com/NixOS/nixpkgs";
@@ -28,14 +31,8 @@ let
     mail = false;
     mailOverride = ""; # devnull+hydra@wdtz.org";
   };
-  allvm = {
-    type = "git";
-    value = "git@gitlab.engr.illinois.edu:llvm/allvm-nixpkgs";
-  };
-  allvm-tools = {
-    type = "git";
-    value = "git@gitlab.engr.illinois.edu:llvm/allvm";
-  };
+  allvm = gitlab { repo = "allvm-nixpkgs"; };
+  allvm-tools = gitlab { repo = "allvm"; };
   jobsetsAttrs = with pkgs.lib; mapAttrs (name: settings: recursiveUpdate defaultSettings settings) (rec {
     bootstrap-tools = {
       keep = 2;
@@ -47,12 +44,12 @@ let
     cross-musl64 = {
       path = "pkgs/top-level/release-cross.nix";
       input = "nixpkgs";
-      inputs.nixpkgs = allvm // { value = "${allvm.value} experimental/cross-musl"; };
+      inputs.nixpkgs = allvm.override { branch = "experimental/cross-musl"; };
     };
     cross-musl64-ben = {
       path = "pkgs/top-level/release-cross.nix";
       input = "nixpkgs";
-      inputs.nixpkgs = allvm // { value = "${allvm.value} experimental/cross-musl"; };
+      inputs.nixpkgs = allvm.override { branch = "experimental/cross-musl-plus-ben"; };
     };
 
     /*
