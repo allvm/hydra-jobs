@@ -2,12 +2,7 @@
 
 let
   pkgs = import nixpkgs {};
-  gitlab = let
-    inherit (pkgs) lib;
-    gitlabURL = "git@gitlab.engr.illinois.edu";
-    gitlabGenURL = { group ? "llvm", repo, branch ? null }:
-      "${gitlabURL}:${group}/${repo}" + lib.optionalString (branch != null) " ${branch}";
-    in args: lib.makeOverridable (a: { type = "git"; value = gitlabGenURL a; }) args;
+  gitlab = import ./gitlab.nix { inherit (pkgs) lib; };
   defaultSettings = {
     enabled = "1";
     hidden = false;
