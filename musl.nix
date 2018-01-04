@@ -46,7 +46,7 @@ let
 in
 
 {
-
+  musl = mapTestOnCross lib.systems.examples.musl64 linuxCommon;
 
   bootstrapTools = bootstrapTools.musl;
 }
