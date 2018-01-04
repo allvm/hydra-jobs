@@ -199,7 +199,11 @@ let
 
   # XXX: Move elsewhere
   compilers = {
-    gcc = all;
+    gcc45 = all;
+    gcc48 = all;
+    gcc49 = all;
+    gcc5 = all;
+    gcc6 = all;
     gcc7 = all;
     clang_4 = all;
     clang_5 = all;
