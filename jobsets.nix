@@ -34,7 +34,7 @@ let
   };
   allvm-tools = {
     type = "git";
-    value = "git@gitlab.engr.illinois.edu:llvm/allvm-tools";
+    value = "git@gitlab.engr.illinois.edu:llvm/allvm";
   };
   jobsetsAttrs = with pkgs.lib; mapAttrs (name: settings: recursiveUpdate defaultSettings settings) (rec {
     bootstrap-tools = {
