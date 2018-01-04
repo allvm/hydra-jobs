@@ -37,7 +37,7 @@ let
 
   /* Cross-built bootstrap tools for every supported platform */
   bootstrapTools = let
-    tools = import ../stdenv/linux/make-bootstrap-tools-cross.nix { system = "x86_64-linux"; };
+    tools = import "${nixpkgs}/pkgs/stdenv/linux/make-bootstrap-tools-cross.nix" { system = "x86_64-linux"; };
     maintainers = [ lib.maintainers.dezgeg ];
     mkBootstrapToolsJob = drv:
       assert lib.elem drv.system (supportedSystems ++ [ "aarch64-linux" ]);
