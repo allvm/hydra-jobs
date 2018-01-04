@@ -37,13 +37,11 @@ let
 
     # TODO: Don't use allvm-nixpkgs repo for these
     cross-musl64 = {
-      path = "pkgs/top-level/release-cross.nix";
-      input = "nixpkgs";
+      path = "libcs.nix";
       inputs.nixpkgs = allvm.override { branch = "experimental/cross-musl"; };
     };
     cross-musl64-ben = {
-      path = "pkgs/top-level/release-cross.nix";
-      input = "nixpkgs";
+      path = "libcs.nix";
       inputs.nixpkgs = allvm.override { branch = "experimental/cross-musl-plus-ben"; };
     };
 
