@@ -24,6 +24,14 @@ let
         type = "nix";
         value = ''[ \"x86_64-linux\" ]'';
       };
+      allvm = {
+        type = "git";
+        value = "git@gitlab.engr.illinois.edu:llvm/allvm-nixpkgs";
+      };
+      allvm-tools = {
+        type = "git";
+        value = "git@gitlab.engr.illinois.edu:llvm/allvm-tools";
+      };
     };
     mail = false;
     mailOverride = ""; # devnull+hydra@wdtz.org";
@@ -34,6 +42,19 @@ let
       input = "nixpkgs";
       path = "pkgs/stdenv/linux/make-bootstrap-tools.nix";
     };
+
+    # TODO: Don't use allvm-nixpkgs repo for these
+    cross-musl64 = {
+      path = "pkgs/top-level/release-cross.nix";
+      input = "allvm";
+      inputs.allvm.value = "${defaultSettings.inputs.allvm.value} experimental/cross-musl";
+    };
+    cross-musl64-ben = {
+      path = "pkgs/top-level/release-cross.nix";
+      input = "allvm";
+      inputs.allvm.value = "${defaultSettings.inputs.allvm.value} experimental/cross-musl-plus-ben";
+    };
+
     /*
     hydra-jobs-master = {
       keep = 3;
@@ -42,56 +63,12 @@ let
     hydra-jobs-production = recursiveUpdate hydra-jobs-master {
       inputs.nixpkgs.value = "${defaultSettings.inputs.nixpkgs.value} production";
     };
-    hydra-jobs-mariadb-10-2 = recursiveUpdate hydra-jobs-master {
-      inputs.nixpkgs.value = "${defaultSettings.inputs.nixpkgs.value} mariadb-10.2";
-    };
-    hydra-jobs-darwin = {
-      inputs.supportedSystems.value = ''[ \"x86_64-darwin\" ]'';
-    };
-    mayflower-master = {
-      path = "dist.nix";
-    };
-    mayflower-production = {
-      path = "dist.nix";
-      inputs = hydra-jobs-production.inputs;
-    };
-    nixos-small-master = {
-      input = "nixpkgs";
-      path = "nixos/release-small.nix";
-    };
     */
-    #php = {
-    #  path = "php.nix";
-    #  inputs.supportedSystems.value = ''[ \"x86_64-linux\" \"x86_64-darwin\" ]'';
-    #};
     nixpkgs-manual = {
       input = "nixpkgs";
       path = "doc/default.nix";
     };
-    #hydra-jobs-openssl-1_1 = {
-    #  inputs.nixpkgs.value = "${defaultSettings.inputs.nixpkgs.value} openssl-1.1";
-    #};
-    #hydra-jobs-backport-ff-rust = {
-    #  inputs.nixpkgs.value = "${defaultSettings.inputs.nixpkgs.value} backport-ff-rust";
-    #  path = "backport-ff-rust.nix";
-    #};
-    #"nixpkgs-stats"= {
-    #  enabled = "1";
-    #  input = "stats";
-    #  keep = 5;
-    #  interval = 3600;
-    #  inputs = {
-    #    stats = {
-    #      type = "git";
-    #      value = "https://git.mayflower.de/open-source/nixpkgs-stats";
-    #    };
-    #    nixpkgs = {
-    #      type = "git";
-    #      # value = "git://github.com/mayflower/nixpkgs";
-    #      value = "git://github.com/NixOS/nixpkgs";
-    #    };
-    #  };
-    #};
+
     #hydra-jobs-arm = {
     #  path = "arm.nix";
     #  inputs = {
