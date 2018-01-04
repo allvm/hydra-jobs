@@ -56,6 +56,7 @@ let
     cpio = all;
     cron = linux;
     cups = linux;
+    dbus = linux;
     dhcp = linux;
     diffutils = all;
     e2fsprogs = linux;
@@ -194,12 +195,6 @@ let
     xkeyboard_config = linux;
     zile = linux;
     zip = all;
-
-    dbus = {
-      libs = linux;
-      daemon = linux;
-      tools = linux;
-    };
   };
 
   /* Cross-built bootstrap tools for every supported platform */
