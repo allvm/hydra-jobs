@@ -75,23 +75,23 @@ let
     #  inputs.nixpkgs.value = "${defaultSettings.inputs.nixpkgs.value} backport-ff-rust";
     #  path = "backport-ff-rust.nix";
     #};
-    "nixpkgs-stats"= {
-      enabled = "1";
-      input = "stats";
-      keep = 5;
-      interval = 3600;
-      inputs = {
-        stats = {
-          type = "git";
-          value = "https://git.mayflower.de/open-source/nixpkgs-stats";
-        };
-        nixpkgs = {
-          type = "git";
-          # value = "git://github.com/mayflower/nixpkgs";
-          value = "git://github.com/NixOS/nixpkgs";
-        };
-      };
-    };
+    #"nixpkgs-stats"= {
+    #  enabled = "1";
+    #  input = "stats";
+    #  keep = 5;
+    #  interval = 3600;
+    #  inputs = {
+    #    stats = {
+    #      type = "git";
+    #      value = "https://git.mayflower.de/open-source/nixpkgs-stats";
+    #    };
+    #    nixpkgs = {
+    #      type = "git";
+    #      # value = "git://github.com/mayflower/nixpkgs";
+    #      value = "git://github.com/NixOS/nixpkgs";
+    #    };
+    #  };
+    #};
     #hydra-jobs-arm = {
     #  path = "arm.nix";
     #  inputs = {
