@@ -16,6 +16,6 @@ in
   inherit (cross) musl uclibc;
 
   bootstrapTools = {
-    inherit (bootstrapTools) musl uclibc;
+    inherit (cross.bootstrapTools) musl uclibc;
   };
 }
