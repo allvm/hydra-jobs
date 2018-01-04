@@ -25,7 +25,7 @@ let
         value = ''[ \"x86_64-linux\" ]'';
       };
     };
-    mail = true;
+    mail = false;
     mailOverride = "devnull+hydra@wdtz.org";
   };
   jobsetsAttrs = with pkgs.lib; mapAttrs (name: settings: recursiveUpdate defaultSettings settings) (rec {
