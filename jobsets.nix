@@ -24,17 +24,17 @@ let
         type = "nix";
         value = ''[ \"x86_64-linux\" ]'';
       };
-      allvm = {
-        type = "git";
-        value = "git@gitlab.engr.illinois.edu:llvm/allvm-nixpkgs";
-      };
-      allvm-tools = {
-        type = "git";
-        value = "git@gitlab.engr.illinois.edu:llvm/allvm-tools";
-      };
     };
     mail = false;
     mailOverride = ""; # devnull+hydra@wdtz.org";
+  };
+  allvm = {
+    type = "git";
+    value = "git@gitlab.engr.illinois.edu:llvm/allvm-nixpkgs";
+  };
+  allvm-tools = {
+    type = "git";
+    value = "git@gitlab.engr.illinois.edu:llvm/allvm-tools";
   };
   jobsetsAttrs = with pkgs.lib; mapAttrs (name: settings: recursiveUpdate defaultSettings settings) (rec {
     bootstrap-tools = {
@@ -46,13 +46,13 @@ let
     # TODO: Don't use allvm-nixpkgs repo for these
     cross-musl64 = {
       path = "pkgs/top-level/release-cross.nix";
-      input = "allvm";
-      inputs.allvm.value = "${defaultSettings.inputs.allvm.value} experimental/cross-musl";
+      input = "nixpkgs";
+      inputs.nixpkgs = allvm // { value = "${allvm.value} experimental/cross-musl"; };
     };
     cross-musl64-ben = {
       path = "pkgs/top-level/release-cross.nix";
-      input = "allvm";
-      inputs.allvm.value = "${defaultSettings.inputs.allvm.value} experimental/cross-musl-plus-ben";
+      input = "nixpkgs";
+      inputs.nixpkgs = allvm // { value = "${allvm.value} experimental/cross-musl"; };
     };
 
     /*
