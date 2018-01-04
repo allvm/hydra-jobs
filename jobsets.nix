@@ -26,7 +26,7 @@ let
       };
     };
     mail = false;
-    mailOverride = "devnull+hydra@wdtz.org";
+    mailOverride = ""; # devnull+hydra@wdtz.org";
   };
   jobsetsAttrs = with pkgs.lib; mapAttrs (name: settings: recursiveUpdate defaultSettings settings) (rec {
     bootstrap-tools = {
