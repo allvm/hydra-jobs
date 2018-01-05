@@ -60,7 +60,7 @@ let
       crossSystemExampleName = "raspberryPi";
       inputs.nixpkgs = {
         type = "git";
-        value = "https://github.com/dtzWill/nixpkgs"
+        value = "https://github.com/dtzWill/nixpkgs";
       };
     };
     cross-rpi-batch-1 = {
@@ -68,7 +68,7 @@ let
       crossSystemExampleName = "raspberryPi";
       inputs.nixpkgs = {
         type = "git";
-        value = "https://github.com/dtzWill/nixpkgs fix/cross-batch-1"
+        value = "https://github.com/dtzWill/nixpkgs fix/cross-batch-1";
       };
     };
     cross-rpi-batch-2 = {
@@ -76,7 +76,7 @@ let
       crossSystemExampleName = "raspberryPi";
       inputs.nixpkgs = {
         type = "git";
-        value = "https://github.com/dtzWill/nixpkgs fix/cross-batch-2"
+        value = "https://github.com/dtzWill/nixpkgs fix/cross-batch-2";
       };
     };
     cross-rpi-wip = {
