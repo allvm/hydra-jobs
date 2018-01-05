@@ -38,7 +38,7 @@ let
     # TODO: Don't use allvm-nixpkgs repo for these
     cross-musl64 = {
       path = "cross.nix";
-      crossSystemExampleName = "musl64";
+      inputs.crossSystemExampleName = { type = "string"; value = "musl64"; };
       inputs.nixpkgs = allvm.override { branch = "experimental/cross-musl"; };
     };
     #cross-musl64-all = {
@@ -47,7 +47,7 @@ let
     #};
     cross-musl64-ben = {
       path = "cross.nix";
-      crossSystemExampleName = "musl64";
+      inputs.crossSystemExampleName = { type = "string"; value = "musl64"; };
       inputs.nixpkgs = allvm.override { branch = "experimental/cross-musl-plus-ben"; };
     };
     #cross-musl64-ben-all = {
@@ -57,7 +57,7 @@ let
 
     cross-rpi-master = {
       path = "cross.nix";
-      crossSystemExampleName = "raspberryPi";
+      inputs.crossSystemExampleName = { type = "string"; value = "raspberryPi"; };
       inputs.nixpkgs = {
         type = "git";
         value = "https://github.com/dtzWill/nixpkgs";
@@ -65,7 +65,7 @@ let
     };
     cross-rpi-batch-1 = {
       path = "cross.nix";
-      crossSystemExampleName = "raspberryPi";
+      inputs.crossSystemExampleName = { type = "string"; value = "raspberryPi"; };
       inputs.nixpkgs = {
         type = "git";
         value = "https://github.com/dtzWill/nixpkgs fix/cross-batch-1";
@@ -73,7 +73,7 @@ let
     };
     cross-rpi-batch-2 = {
       path = "cross.nix";
-      crossSystemExampleName = "raspberryPi";
+      inputs.crossSystemExampleName = { type = "string"; value = "raspberryPi"; };
       inputs.nixpkgs = {
         type = "git";
         value = "https://github.com/dtzWill/nixpkgs fix/cross-batch-2";
@@ -81,7 +81,7 @@ let
     };
     cross-rpi-wip = {
       path = "cross.nix";
-      crossSystemExampleName = "raspberryPi";
+      inputs.crossSystemExampleName = { type = "string"; value = "raspberryPi"; };
       inputs.nixpkgs = {
         type = "git";
         value = "https://github.com/dtzWill/nixpkgs fix/cross-low-impact";
