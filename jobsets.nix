@@ -40,18 +40,18 @@ let
       path = "musl.nix";
       inputs.nixpkgs = allvm.override { branch = "experimental/cross-musl"; };
     };
-    cross-musl64-all = {
-      path = "musl-all.nix";
-      inputs.nixpkgs = allvm.override { branch = "experimental/cross-musl"; };
-    };
+    #cross-musl64-all = {
+    #  path = "musl-all.nix";
+    #  inputs.nixpkgs = allvm.override { branch = "experimental/cross-musl"; };
+    #};
     cross-musl64-ben = {
       path = "musl.nix";
       inputs.nixpkgs = allvm.override { branch = "experimental/cross-musl-plus-ben"; };
     };
-    cross-musl64-ben-all = {
-      path = "musl-all.nix";
-      inputs.nixpkgs = allvm.override { branch = "experimental/cross-musl-plus-ben"; };
-    };
+    #cross-musl64-ben-all = {
+    #  path = "musl-all.nix";
+    #  inputs.nixpkgs = allvm.override { branch = "experimental/cross-musl-plus-ben"; };
+    #};
 
     /*
     hydra-jobs-master = {
