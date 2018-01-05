@@ -41,6 +41,11 @@ let
       inputs.crossSystemExampleName = { type = "string"; value = "musl64"; };
       inputs.nixpkgs = allvm.override { branch = "experimental/cross-musl"; };
     };
+    cross-musl64-basics = {
+      path = "cross.nix";
+      inputs.crossSystemExampleName = { type = "string"; value = "musl64"; };
+      inputs.nixpkgs = allvm.override { branch = "feature/musl-basics"; };
+    };
     #cross-musl64-all = {
     #  path = "musl-all.nix";
     #  inputs.nixpkgs = allvm.override { branch = "experimental/cross-musl"; };
