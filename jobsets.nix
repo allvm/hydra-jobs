@@ -53,6 +53,35 @@ let
     #  inputs.nixpkgs = allvm.override { branch = "experimental/cross-musl-plus-ben"; };
     #};
 
+    cross-rpi-master = {
+      path = "rpi.nix";
+      inputs.nixpkgs = {
+        type = "git";
+        value = "https://github.com/dtzWill/nixpkgs"
+      };
+    };
+    cross-rpi-batch-1 = {
+      path = "rpi.nix";
+      inputs.nixpkgs = {
+        type = "git";
+        value = "https://github.com/dtzWill/nixpkgs fix/cross-batch-1"
+      };
+    };
+    cross-rpi-batch-2 = {
+      path = "rpi.nix";
+      inputs.nixpkgs = {
+        type = "git";
+        value = "https://github.com/dtzWill/nixpkgs fix/cross-batch-2"
+      };
+    };
+    cross-rpi-wip = {
+      path = "rpi.nix";
+      inputs.nixpkgs = {
+        type = "git";
+        value = "https://github.com/dtzWill/nixpkgs fix/cross-low-impact";
+      };
+    };
+
     /*
     hydra-jobs-master = {
       keep = 3;
