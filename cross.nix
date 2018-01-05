@@ -3,6 +3,7 @@
 { nixpkgs
 , supportedSystems ? [ "x86_64-linux" ]
 , crossSystemExampleName ? "musl64"
+, bootstrapName ? "musl"
 , # Strip most of attributes when evaluating to spare memory usage
   scrubJobs ? true
 }:
@@ -228,5 +229,5 @@ in
   small = mapTOC small;
   compilers = mapTOC compilers;
 
-  bootstrapTools = bootstrapTools.${crossSystem.arch};
+  bootstrapTools = bootstrapTools.${crossSystem.arch} or bootstrapTools.${bootstrapName};
 }
