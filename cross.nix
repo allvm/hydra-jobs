@@ -128,7 +128,7 @@ let
     mk = linux;
     mktemp = all;
     mono = linux;
-    monotone = linux;
+    # monotone = linux;
     mpg321 = linux;
     mutt = linux;
     mysql = linux;
