@@ -85,6 +85,15 @@ let
       };
     };
 
+    cross-mingwW64 = {
+      path = "cross.nix";
+      inputs.crossSystemExampleName = { type = "string"; value = "mingwW64"; };
+      inputs.nixpkgs = {
+        type = "git";
+        value = "https://github.com/dtzWill/nixpkgs fix/cross-low-impact";
+      };
+    };
+
     /*
     hydra-jobs-master = {
       keep = 3;
