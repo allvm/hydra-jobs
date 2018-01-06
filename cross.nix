@@ -215,7 +215,7 @@ let
     tools = import "${nixpkgs}/pkgs/stdenv/linux/make-bootstrap-tools-cross.nix" { system = "x86_64-linux"; };
     maintainers = [ lib.maintainers.dtzWill ];
     mkBootstrapToolsJob = drv:
-      assert lib.elem drv.system (supportedSystems ++ [ "aarch64-linux" "armv6l-linux" ]);
+      assert lib.elem drv.system supportedSystems;
       hydraJob' (lib.addMetaAttrs { inherit maintainers; } drv);
   in lib.mapAttrsRecursiveCond (as: !lib.isDerivation as) (name: mkBootstrapToolsJob) tools;
 
