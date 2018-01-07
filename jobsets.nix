@@ -94,6 +94,22 @@ let
       };
     };
 
+    custom-ld-default = {
+      path = "custom-ld.nix";
+      inputs.nixpkgs = {
+        type = "git";
+        value = "https://github.com/dtzWill/nixpkgs feature/binutils-custom-ld";
+      };
+    };
+    custom-ld-gold = {
+      path = "custom-ld.nix";
+      inputs.nixpkgs = {
+        type = "git";
+        value = "https://github.com/dtzWill/nixpkgs feature/binutils-custom-ld";
+      };
+      inputs.defaultLd = { type = "string"; value = "gold"; };
+    };
+
     /*
     hydra-jobs-master = {
       keep = 3;
