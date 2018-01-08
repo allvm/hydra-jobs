@@ -65,22 +65,7 @@ let
         value = "https://github.com/dtzWill/nixpkgs";
       };
     };
-    cross-rpi-batch-1 = {
-      path = "cross.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "raspberryPi"; };
-      inputs.nixpkgs = {
-        type = "git";
-        value = "https://github.com/dtzWill/nixpkgs fix/cross-batch-1";
-      };
-    };
-    cross-rpi-batch-2 = {
-      path = "cross.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "raspberryPi"; };
-      inputs.nixpkgs = {
-        type = "git";
-        value = "https://github.com/dtzWill/nixpkgs fix/cross-batch-2";
-      };
-    };
+
     cross-rpi-wip = {
       path = "cross.nix";
       inputs.crossSystemExampleName = { type = "string"; value = "raspberryPi"; };
@@ -90,14 +75,14 @@ let
       };
     };
 
-    cross-mingwW64 = {
-      path = "cross.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "mingwW64"; };
-      inputs.nixpkgs = {
-        type = "git";
-        value = "https://github.com/dtzWill/nixpkgs fix/cross-low-impact";
-      };
-    };
+    #cross-mingwW64 = {
+    #  path = "cross.nix";
+    #  inputs.crossSystemExampleName = { type = "string"; value = "mingwW64"; };
+    #  inputs.nixpkgs = {
+    #    type = "git";
+    #    value = "https://github.com/dtzWill/nixpkgs fix/cross-low-impact";
+    #  };
+    #};
 
     custom-ld-default = {
       path = "custom-ld.nix";
