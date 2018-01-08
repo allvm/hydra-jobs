@@ -100,6 +100,14 @@ let
       inputs.defaultLd = { type = "string"; value = "gold"; };
     };
 
+    souper = {
+      path = "souper.nix";
+      inputs.nixpkgs = {
+        type = "git";
+        value = "https://github.com/dtzWill/nixpkgs update/souper-2018";
+      };
+    };
+
     /*
     hydra-jobs-master = {
       keep = 3;
