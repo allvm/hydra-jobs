@@ -29,13 +29,14 @@ in rec {
   forAllSupportedSystems = systems: f:
     genAttrs (filter (x: elem x supportedSystems) systems) f;
 
-  /* Build a package on the given set of platforms.  The function `f'
-     is called for each supported platform with Nixpkgs for that
-     platform as an argument .  We return an attribute set containing
-     a derivation for each supported platform, i.e. ‘{ x86_64-linux =
-     f pkgs_x86_64_linux; i686-linux = f pkgs_i686_linux; ... }’. */
-  testOn = systems: f: forAllSupportedSystems systems
-    (system: hydraJob' (f (pkgsFor system)));
+  testOn = systems: f: builtins.trace systems f pkgs;
+    #  /* Build a package on the given set of platforms.  The function `f'
+    #     is called for each supported platform with Nixpkgs for that
+    #     platform as an argument .  We return an attribute set containing
+    #     a derivation for each supported platform, i.e. ‘{ x86_64-linux =
+    #     f pkgs_x86_64_linux; i686-linux = f pkgs_i686_linux; ... }’. */
+    #  testOn = systems: f: forAllSupportedSystems systems
+    #    (system: hydraJob' (f (pkgsFor system)));
 
 
   /* Similar to the testOn function, but with an additional
