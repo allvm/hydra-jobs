@@ -8,7 +8,7 @@
   scrubJobs ? true
 }:
 
-# For now, hijack release-cross.nix
+# For now, hijack release-lib.nix
 
 with import "${nixpkgs}/pkgs/top-level/release-lib.nix" { inherit supportedSystems scrubJobs; };
 
