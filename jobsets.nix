@@ -29,11 +29,11 @@ let
   allvm = gitlab { repo = "allvm-nixpkgs"; };
   allvm-tools = gitlab { repo = "allvm"; };
   jobsetsAttrs = with pkgs.lib; mapAttrs (name: settings: recursiveUpdate defaultSettings settings) (rec {
-    bootstrap-tools = {
-      keep = 2;
-      input = "nixpkgs";
-      path = "pkgs/stdenv/linux/make-bootstrap-tools.nix";
-    };
+    #bootstrap-tools = {
+    #  keep = 2;
+    #  input = "nixpkgs";
+    #  path = "pkgs/stdenv/linux/make-bootstrap-tools.nix";
+    #};
 
     # TODO: Don't use allvm-nixpkgs repo for these
     cross-musl64 = {
