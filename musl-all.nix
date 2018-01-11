@@ -15,19 +15,19 @@ let
   packageSet = import nixpkgs;
 in with lib;
 
-with let
-in rec {
+with rec {
   allPackages = args: packageSet (args // muslNixpkgsArgs);
 
   hydraJob' = if scrubJobs then hydraJob else id;
 
   # pkgs = packageSet (lib.recursiveUpdate { system = "x86_64-linux"; config.allowUnsupportedSystem = true; } nixpkgsArgs);
+  # pkgs = packageSet (lib.recursiveUpdate { config.allowUnsupportedSystem = true; } muslNixpkgsArgs);
   pkgs = allPackages { };
   inherit lib;
 
 
-  forAllSupportedSystems = systems: f:
-    genAttrs (filter (x: elem x supportedSystems) systems) f;
+  #forAllSupportedSystems = systems: f:
+  #  genAttrs (filter (x: elem x supportedSystems) systems) f;
 
   testOn = systems: f: builtins.trace systems f pkgs;
     #  /* Build a package on the given set of platforms.  The function `f'
