@@ -86,6 +86,7 @@ let
 
     custom-ld-default = {
       path = "custom-ld.nix";
+      enabled = "0";
       inputs.nixpkgs = {
         type = "git";
         value = "https://github.com/dtzWill/nixpkgs feature/binutils-custom-ld";
@@ -93,6 +94,7 @@ let
     };
     custom-ld-gold = {
       path = "custom-ld.nix";
+      enabled = "0";
       inputs.nixpkgs = {
         type = "git";
         value = "https://github.com/dtzWill/nixpkgs feature/binutils-custom-ld";
