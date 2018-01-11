@@ -116,6 +116,12 @@ let
       path = "doc/default.nix";
     };
 
+    nixpkgs-manual-musl = {
+      input = "nixpkgs";
+      path = "doc/default.nix";
+      inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
+    };
+
     #hydra-jobs-arm = {
     #  path = "arm.nix";
     #  inputs = {
