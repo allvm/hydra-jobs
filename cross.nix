@@ -208,6 +208,8 @@ let
     gcc7 = all;
     clang_4 = all;
     clang_5 = all;
+    llvm_4 = all;
+    llvm_5 = all;
   };
 
   /* Cross-built bootstrap tools for every supported platform */
