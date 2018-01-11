@@ -117,13 +117,11 @@ let
     };
     */
     nixpkgs-manual = {
-      input = "nixpkgs";
-      path = "doc/default.nix";
+      path = "manual.nix";
     };
 
     nixpkgs-manual-musl = {
-      input = "nixpkgs";
-      path = "doc/default.nix";
+      path = "manual.nix";
       inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
     };
 
