@@ -42,8 +42,8 @@ in rec {
   /* Similar to the testOn function, but with an additional
      'crossSystem' parameter for allPackages, defining the target
      platform for cross builds. */
-  testOnCross = crossSystem: systems: f: forAllSupportedSystems systems
-    (system: hydraJob' (f (allPackages { inherit system crossSystem; })));
+     #  testOnCross = crossSystem: systems: f: forAllSupportedSystems systems
+     #    (system: hydraJob' (f (allPackages { inherit system crossSystem; })));
 
 
   /* Given a nested set where the leaf nodes are lists of platforms,
