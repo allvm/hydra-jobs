@@ -2,6 +2,7 @@
 
 { nixpkgs ? fetchGit ~/musl-nix, release ? ../musl-all.nix, args ? { inherit nixpkgs; } }:
 
+# import ./hydra-eval.nix { inherit nixpkgs release args; }
 import ./eval-release-test.nix {
   inherit nixpkgs release args;
 }

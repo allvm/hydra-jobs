@@ -2,7 +2,7 @@
 let
   lib = import "${nixpkgs}/lib";
   # hydraJobs = import "${nixpkgs}/pkgs/top-level/release.nix";
-  hydraJobs = import release args;
+  hydraJobs = import release args //
   # Compromise: accuracy vs. resources needed for evaluation.
   { supportedSystems = cfg.systems or [ "x86_64-linux" "x86_64-darwin" ]; };
   # cfg = (import nixpkgs {}).config.rebuild-amount or {};
