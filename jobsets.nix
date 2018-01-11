@@ -84,6 +84,11 @@ let
       };
     };
 
+    musl64-native = {
+      path = "musl-all.nix";
+      inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
+    };
+
     custom-ld-default = {
       path = "custom-ld.nix";
       enabled = "0";
