@@ -29,7 +29,7 @@ with rec {
   #forAllSupportedSystems = systems: f:
   #  genAttrs (filter (x: elem x supportedSystems) systems) f;
 
-  testOn = systems: f: f pkgs;
+  testOn = systems: f: hydraJob' (f pkgs);
     #  /* Build a package on the given set of platforms.  The function `f'
     #     is called for each supported platform with Nixpkgs for that
     #     platform as an argument .  We return an attribute set containing
