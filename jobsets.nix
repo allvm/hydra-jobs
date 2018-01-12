@@ -86,6 +86,7 @@ let
 
     musl64-native = {
       path = "musl-all.nix";
+      enabled = "0";
       inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
     };
     musl64-native-small = {
