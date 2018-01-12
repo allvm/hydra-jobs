@@ -1,5 +1,3 @@
-
-
 { nixpkgs
 , supportedSystems ? [ "x86_64-linux" ]
 , # Strip most of attributes when evaluating to spare memory usage
