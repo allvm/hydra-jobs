@@ -14,7 +14,7 @@ let release-lib = import "${nixpkgs}/pkgs/top-level/release-lib.nix" { inherit s
 
 in
   with release-lib;
-  with import ./job-groups.nix release-lib;
+  with import ./support/job-groups.nix release-lib;
 
 let
   /* Cross-built bootstrap tools for every supported platform */

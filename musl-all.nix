@@ -6,11 +6,12 @@
 ,  nixpkgsArgs ? { config = { allowUnfree = false; inHydra = true; }; }
 }:
 
-let release-musl-native-lib = import ./release-musl-native-lib.nix { inherit supportedSystems scrubJobs nixpkgs nixpkgsArgs; };
-
+let
+  release-lib = import ./support/release-musl-native-lib.nix {
+    inherit supportedSystems scrubJobs nixpkgs nixpkgsArgs;
+  };
 in
-  with release-musl-native-lib;
-  #  with import ./job-groups.nix release-lib;
+  with release-lib;
 
 
 mapTestOn ((packagePlatforms pkgs) // rec {

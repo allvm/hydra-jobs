@@ -2,7 +2,7 @@
 
 let
   pkgs = import nixpkgs {};
-  gitlab = import ./gitlab.nix { inherit (pkgs) lib; };
+  gitlab = import ./support/gitlab.nix { inherit (pkgs) lib; };
   defaultSettings = {
     enabled = "1";
     hidden = false;
