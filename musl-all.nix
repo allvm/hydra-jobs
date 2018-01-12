@@ -16,27 +16,39 @@ let
 in with lib;
 
 with rec {
-  allPackages = args: packageSet (args // muslNixpkgsArgs);
+  allPackages = args: packageSet (lib.recursiveUpdate args muslNixpkgsArgs);
 
   hydraJob' = if scrubJobs then hydraJob else id;
 
   # pkgs = packageSet (lib.recursiveUpdate { system = "x86_64-linux"; config.allowUnsupportedSystem = true; } nixpkgsArgs);
-  # pkgs = packageSet (lib.recursiveUpdate { config.allowUnsupportedSystem = true; } muslNixpkgsArgs);
-  pkgs = allPackages { };
+  pkgs = allPackages { config.allowUnsupportedSystems = true; };
   inherit lib;
 
+  pkgsFor = system:
+    if system == "x86_64-linux" then pkgs #  pkgs_x86_64_linux
+    # else if system == "i686-linux" then pkgs_i686_linux
+    # else if system == "aarch64-linux" then pkgs_aarch64_linux
+    # else if system == "armv6l-linux" then pkgs_armv6l_linux
+    # else if system == "armv7l-linux" then pkgs_armv7l_linux
+    # else if system == "x86_64-darwin" then pkgs_x86_64_darwin
+    # else if system == "x86_64-freebsd" then pkgs_x86_64_freebsd
+    # else if system == "i686-freebsd" then pkgs_i686_freebsd
+    # else if system == "i686-cygwin" then pkgs_i686_cygwin
+    # else if system == "x86_64-cygwin" then pkgs_x86_64_cygwin
+    else abort "unsupported system type: ${system}";
 
-  #forAllSupportedSystems = systems: f:
-  #  genAttrs (filter (x: elem x supportedSystems) systems) f;
 
-  testOn = systems: f: hydraJob' (f pkgs);
-    #  /* Build a package on the given set of platforms.  The function `f'
-    #     is called for each supported platform with Nixpkgs for that
-    #     platform as an argument .  We return an attribute set containing
-    #     a derivation for each supported platform, i.e. ‘{ x86_64-linux =
-    #     f pkgs_x86_64_linux; i686-linux = f pkgs_i686_linux; ... }’. */
-    #  testOn = systems: f: forAllSupportedSystems systems
-    #    (system: hydraJob' (f (pkgsFor system)));
+  forAllSupportedSystems = systems: f:
+    genAttrs (filter (x: elem x supportedSystems) systems) f;
+
+  # testOn = systems: f: hydraJob' (f pkgs);
+  /* Build a package on the given set of platforms.  The function `f'
+     is called for each supported platform with Nixpkgs for that
+     platform as an argument .  We return an attribute set containing
+     a derivation for each supported platform, i.e. ‘{ x86_64-linux =
+     f pkgs_x86_64_linux; i686-linux = f pkgs_i686_linux; ... }’. */
+  testOn = systems: f: forAllSupportedSystems systems
+    (system: hydraJob' (f (pkgsFor system)));
 
 
   /* Similar to the testOn function, but with an additional
@@ -83,4 +95,14 @@ mapTestOn ((packagePlatforms pkgs) // rec {
         osx_private_sdk = {};
         xcode = {};
       };
+
+      # Don't build misc embedded toolchains for now
+      gcc-arm-embedded-4_7 = {};
+      gcc-arm-embedded-4_8 = {};
+      gcc-arm-embedded-4_9 = {};
+      gcc-arm-embedded-5 = {};
+
+      driversi686Linux = {};
+
+      mentorToolchains = {};
     } )
