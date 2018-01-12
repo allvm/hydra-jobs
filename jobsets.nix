@@ -88,6 +88,10 @@ let
       path = "musl-all.nix";
       inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
     };
+    musl64-native-small = {
+      path = "musl-small.nix";
+      inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
+    };
 
     custom-ld-default = {
       path = "custom-ld.nix";
