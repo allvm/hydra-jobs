@@ -1,7 +1,7 @@
 { nixpkgs }:
 
 let
-  d = import "${nixpkgs}/doc/";
+  d = import (nixpkgs + "/doc");
 in {
   ${d.name} = d;
 }

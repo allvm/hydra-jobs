@@ -5,7 +5,7 @@
 , supportedSystems ? [ "x86_64-linux" ]
 }:
 
-with import "${nixpkgs}/pkgs/top-level/release-lib.nix" { inherit supportedSystems; };
+with import (nixpkgs + "/pkgs/top-level/release-lib.nix") { inherit supportedSystems; };
 
 let
   pkgs = import nixpkgs {};
@@ -770,6 +770,6 @@ in
   vistafonts = all;
   wqy_microhei = all;
 }) // {
-  manual = import "${nixpkgs}/doc";
-  lib-tests = import "${nixpkgs}/lib/tests/release.nix" { inherit pkgs; };
+  manual = import (nixpkgs + "/doc");
+  lib-tests = import (nixpkgs + "/lib/tests/release.nix") { inherit pkgs; };
 }

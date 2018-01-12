@@ -3,7 +3,7 @@
 
 { nixpkgs, release, args ? { } }:
 
-with import "${nixpkgs}/lib";
+with import (nixpkgs + "/lib");
 # with import ../../lib;
 
 let

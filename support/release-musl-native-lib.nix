@@ -8,7 +8,7 @@
 
 
 let
-  lib = import "${nixpkgs}/lib";
+  lib = import (nixpkgs + "/lib");
   muslNixpkgsArgs = lib.recursiveUpdate { localSystem = lib.systems.examples.musl64; } nixpkgsArgs;
   packageSet = import nixpkgs;
 in with lib;

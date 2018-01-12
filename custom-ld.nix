@@ -6,7 +6,7 @@
   nixpkgsArgs ? { config = { allowUnfree = false; inHydra = true; inherit defaultLd; }; }
 }:
 
-with import "${nixpkgs}/pkgs/top-level/release-lib.nix" { inherit supportedSystems nixpkgsArgs; };
+with import (nixpkgs + "/pkgs/top-level/release-lib.nix") { inherit supportedSystems nixpkgsArgs; };
 
 mapTestOn (rec {
 

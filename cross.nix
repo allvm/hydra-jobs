@@ -10,7 +10,7 @@
 
 # For now, hijack release-lib.nix
 
-let release-lib = import "${nixpkgs}/pkgs/top-level/release-lib.nix" { inherit supportedSystems scrubJobs; };
+let release-lib = import (nixpkgs + "/pkgs/top-level/release-lib.nix") { inherit supportedSystems scrubJobs; };
 
 in
   with release-lib;
@@ -19,7 +19,7 @@ in
 let
   /* Cross-built bootstrap tools for every supported platform */
   bootstrapTools = let
-    tools = import "${nixpkgs}/pkgs/stdenv/linux/make-bootstrap-tools-cross.nix" { system = "x86_64-linux"; };
+    tools = import (nixpkgs + "/pkgs/stdenv/linux/make-bootstrap-tools-cross.nix") { system = "x86_64-linux"; };
     maintainers = [ lib.maintainers.dtzWill ];
     mkBootstrapToolsJob = drv:
       assert lib.elem drv.system supportedSystems;

@@ -1,6 +1,6 @@
 { nixpkgs, release, args ? { inherit nixpkgs; } }:
 let
-  lib = import "${nixpkgs}/lib";
+  lib = import (nixpkgs + "/lib");
   # hydraJobs = import "${nixpkgs}/pkgs/top-level/release.nix";
   hydraJobs = import release args //
   # Compromise: accuracy vs. resources needed for evaluation.
