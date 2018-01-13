@@ -32,6 +32,7 @@ in
     libapparmor = linux;
     libusb = linux;
     libnl = linux;
+    utillinux = linux;
     wirelesstools = linux;
 
     SDL = linux;
