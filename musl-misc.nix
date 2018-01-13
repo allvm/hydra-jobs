@@ -30,6 +30,7 @@ in
 
     audit = linux;
     libapparmor = linux;
+    libtirpc = linux;
     libusb = linux;
     libnl = linux;
     utillinux = linux;
@@ -46,6 +47,7 @@ in
     libnet  = linux;
     tbb = linux;
 
+    autogen = linux;
     guile = linux;
     go = linux;
 
