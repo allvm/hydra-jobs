@@ -34,6 +34,7 @@ in
   linuxCommon = mapTOC linuxCommon;
   small = mapTOC small;
   compilers = mapTOC compilers;
+  misc = mapTOC misc;
 
   bootstrapTools = bootstrapTools.${crossSystem.arch} or bootstrapTools.${bootstrapName};
 }

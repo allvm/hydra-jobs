@@ -18,4 +18,7 @@ in
   linuxCommon = mapTestOn linuxCommon;
   small = mapTestOn small;
   compilers = mapTestOn compilers;
+  misc = mapTestOn misc;
+
+  tests = mapTestOn (packagePlatforms pkgs.tests);
 }

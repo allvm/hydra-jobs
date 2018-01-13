@@ -205,4 +205,15 @@ rec {
     llvm_4 = all;
     llvm_5 = all;
   };
+
+  misc = {
+    git = all;
+    python2 = all;
+    python3 = all;
+    linux = all;
+    nix-info = all;
+    nox = all;
+    vim = all;
+    zsh = all;
+  };
 }
