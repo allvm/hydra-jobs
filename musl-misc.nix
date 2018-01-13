@@ -44,10 +44,19 @@ in
     glib = linux;
     libnet  = linux;
     tbb = linux;
+
+    guile = linux;
+
+    pulseaudioLight = linux;
+    # pulseaudioFull = linux;
+    webrtc-audio-processing = linux;
+
+    dbus = linux;
+
+    boolector = linux;
+    eprover = linux;
+    picosat = linux;
   };
 
-  boolector
-  eprover
-  picosat
 }
 
