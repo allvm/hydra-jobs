@@ -62,8 +62,12 @@ in
 
     # unfree
     # boolector = linux;
+    avy = linux;
+    cvc3 = linux;
+    cvc4 = linux;
     eprover = linux;
     picosat = linux;
+    yices = linux;
 
     openblas = linux;
   };
