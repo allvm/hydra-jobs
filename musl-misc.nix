@@ -40,6 +40,8 @@ in
     libnl = linux;
     utillinux = linux;
     wirelesstools = linux;
+
+    systemd = linux;
   };
 
   desktop = mapTestOn {
