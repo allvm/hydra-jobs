@@ -15,7 +15,7 @@ in
   with import ./support/job-groups.nix release-lib;
 
 {
-  misc = mapTestOn {
+  servers = mapTestOn {
     squid = linux;
     squid4 = linux;
   };
