@@ -18,7 +18,9 @@ in
   misc = mapTestOn {
     squid = linux;
     squid4 = linux;
+  };
 
+  crypto = mapTestOn {
     cyrus_sasl = linux;
     gnutls = linux;
     ldns = linux;
@@ -28,7 +30,9 @@ in
     openssl_1_1_0 = linux;
     p11_kit = linux;
     unbound = linux;
+  };
 
+  system = mapTestOn {
     audit = linux;
     libapparmor = linux;
     libtirpc = linux;
@@ -36,21 +40,14 @@ in
     libnl = linux;
     utillinux = linux;
     wirelesstools = linux;
+  };
 
+  desktop = mapTestOn {
     SDL = linux;
     SDL2 = linux;
 
     gtk2 = linux;
     gtk3 = linux;
-
-    asio = linux;
-    glib = linux;
-    libnet  = linux;
-    tbb = linux;
-
-    autogen = linux;
-    guile = linux;
-    go = linux;
 
     xorg.xorgserver = linux;
 
@@ -59,7 +56,23 @@ in
     webrtc-audio-processing = linux;
 
     dbus = linux;
+  };
 
+
+  libs = mapTestOn {
+    asio = linux;
+    glib = linux;
+    libnet  = linux;
+    tbb = linux;
+  };
+
+  langs = mapTestOn {
+    autogen = linux;
+    guile = linux;
+    go = linux;
+  };
+
+  math = mapOnTest {
     aiger = linux;
     avy = linux;
     cvc3 = linux;
