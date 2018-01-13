@@ -63,6 +63,8 @@ in
     # boolector = linux;
     eprover = linux;
     picosat = linux;
+
+    openblas = linux;
   };
 
 }
