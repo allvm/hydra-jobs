@@ -20,6 +20,7 @@ in
     squid4 = linux;
 
     cyrus_sasl = linux;
+    gnutls = linux;
     ldns = linux;
     nettle = linux;
     openssh = linux;
