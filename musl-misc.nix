@@ -54,7 +54,8 @@ in
 
     dbus = linux;
 
-    boolector = linux;
+    # unfree
+    # boolector = linux;
     eprover = linux;
     picosat = linux;
   };
