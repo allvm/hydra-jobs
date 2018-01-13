@@ -20,5 +20,6 @@ in
   compilers = mapTestOn compilers;
   misc = mapTestOn misc;
 
-  tests = mapTestOn (packagePlatforms pkgs.tests);
+  # TODO: Simplify
+  tests = (mapTestOn (packagePlatforms pkgs)).tests;
 }
