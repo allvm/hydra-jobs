@@ -74,7 +74,7 @@ in
     go = linux;
   };
 
-  math = mapOnTest {
+  math = mapTestOn {
     aiger = linux;
     avy = linux;
     cvc3 = linux;
