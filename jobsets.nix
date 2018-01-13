@@ -127,10 +127,12 @@ let
     */
     nixpkgs-manual = {
       path = "manual.nix";
+      enabled = "0";
     };
 
     nixpkgs-manual-musl = {
       path = "manual.nix";
+      enabled = "0";
       inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
     };
 
