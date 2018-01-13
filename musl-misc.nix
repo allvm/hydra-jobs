@@ -60,8 +60,7 @@ in
 
     dbus = linux;
 
-    # unfree
-    # boolector = linux;
+    aiger = linux;
     avy = linux;
     cvc3 = linux;
     cvc4 = linux;
