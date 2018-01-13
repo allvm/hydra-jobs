@@ -9,7 +9,7 @@ let
     description = "";
     input = "jobs";
     path = "default.nix";
-    keep = 1;
+    keep = 0;
     shares = 42;
     interval = 300;
     inputs = {
