@@ -47,6 +47,9 @@ in
     tbb = linux;
 
     guile = linux;
+    go = linux;
+
+    xorg.xorgserver = linux;
 
     pulseaudioLight = linux;
     # pulseaudioFull = linux;
