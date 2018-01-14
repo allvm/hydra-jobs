@@ -64,6 +64,8 @@ in
     webrtc-audio-processing = linux;
 
     dbus = linux;
+
+    termite = linux;
   };
 
 
