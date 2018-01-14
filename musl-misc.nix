@@ -51,6 +51,11 @@ in
     gtk2 = linux;
     gtk3 = linux;
 
+    qt4 = linux;
+    qt5 = linux;
+
+    mesa = linux;
+
     xorg.xorgserver = linux;
 
     pulseaudioLight = linux;
