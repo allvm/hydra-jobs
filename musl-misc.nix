@@ -78,12 +78,26 @@ in
 
   langs = mapTestOn {
     autogen = linux;
-    guile = linux;
     go = linux;
+    guile = linux;
+
+    lua4 = linux;
+    lua5 = linux;
+    luajit = linux;
 
     mono = linux;
     mono48 = linux;
     mono50 = linux;
+
+    perl = linux;
+
+    python2 = linux;
+    python3 = linux;
+
+    ruby = linux;
+
+    spidermonkey = linux;
+    spidermonkey_52 = linux;
   };
 
   math = mapTestOn {
