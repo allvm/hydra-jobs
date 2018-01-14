@@ -80,6 +80,10 @@ in
     autogen = linux;
     guile = linux;
     go = linux;
+
+    mono = linux;
+    mono48 = linux;
+    mono50 = linux;
   };
 
   math = mapTestOn {
