@@ -52,7 +52,8 @@ in
     gtk3 = linux;
 
     qt4 = linux;
-    qt5 = linux;
+
+    qt5.qtbase = linux;
 
     mesa = linux;
 
