@@ -73,6 +73,11 @@ let
         value = "https://github.com/dtzWill/nixpkgs fix/cross-low-impact";
       };
     };
+    cross-rpi-musl-branch = {
+      path = "cross.nix";
+      inputs.crossSystemExampleName = { type = "string"; value = "raspberryPi"; };
+      inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
+    };
 
     cross-mingwW64 = {
       path = "cross.nix";
