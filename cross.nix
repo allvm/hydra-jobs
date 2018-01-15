@@ -3,7 +3,7 @@
 { nixpkgs
 , supportedSystems ? [ "x86_64-linux" ]
 , crossSystemExampleName ? "musl64"
-, bootstrapName ? "musl"
+, bootstrapName ? "x86_64-musl"
 , # Strip most of attributes when evaluating to spare memory usage
   scrubJobs ? true
 }:
