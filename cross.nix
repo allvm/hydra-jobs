@@ -36,5 +36,7 @@ in
   compilers = mapTOC compilers;
   misc = mapTOC misc;
 
+  tests = (mapTOC (packagePlatforms pkgs)).tests;
+
   bootstrapTools = bootstrapTools.${crossSystem.arch} or bootstrapTools.${bootstrapName};
 }
