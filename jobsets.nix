@@ -76,6 +76,7 @@ let
     cross-muslpi = {
       path = "cross.nix";
       inputs.crossSystemExampleName = { type = "string"; value = "muslpi"; };
+      inputs.bootstrapName = { type = "string"; value = "rpi-musl"; };
       inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
     };
 
