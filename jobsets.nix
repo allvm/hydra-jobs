@@ -55,12 +55,12 @@ let
       inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
     };
 
-    #cross-mingwW64 = {
-    #  path = "cross.nix";
-    #  enabled = "0";
-    #  inputs.crossSystemExampleName = { type = "string"; value = "mingwW64"; };
-    #  inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
-    #};
+    cross-mingwW64 = {
+      path = "cross.nix";
+      enabled = "0";
+      inputs.crossSystemExampleName = { type = "string"; value = "mingwW64"; };
+      inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
+    };
 
     musl64-native = {
       path = "musl-all.nix";
@@ -76,24 +76,6 @@ let
       inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
     };
 
-    custom-ld-default = {
-      path = "custom-ld.nix";
-      enabled = "0";
-      inputs.nixpkgs = {
-        type = "git";
-        value = "https://github.com/dtzWill/nixpkgs feature/binutils-custom-ld";
-      };
-    };
-    custom-ld-gold = {
-      path = "custom-ld.nix";
-      enabled = "0";
-      inputs.nixpkgs = {
-        type = "git";
-        value = "https://github.com/dtzWill/nixpkgs feature/binutils-custom-ld";
-      };
-      inputs.defaultLd = { type = "string"; value = "gold"; };
-    };
-
     nixpkgs-manual = {
       path = "manual.nix";
       enabled = "0";
@@ -105,17 +87,6 @@ let
       inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
     };
 
-    #hydra-jobs-arm = {
-    #  path = "arm.nix";
-    #  inputs = {
-    #    nixpkgs = {
-    #      value = "${defaultSettings.inputs.nixpkgs.value} hydra-arm";
-    #    };
-    #    supportedSystems = {
-    #      value = ''[ \"armv7l-linux\" ]'';
-    #    };
-    #  };
-    #};
   });
   fileContents = with pkgs.lib; ''
     cat <<EOF
