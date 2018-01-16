@@ -63,6 +63,12 @@ let
       inputs.bootstrapName = { type = "string"; value = "armv6l-musl"; };
       inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
     };
+    cross-aarch64-musl {
+      path = "cross.nix";
+      inputs.crossSystemExampleName = { type = "string"; value = "aarch64-multiplatform-musl"; };
+      inputs.bootstrapName = { type = "string"; value = "aarch64-musl"; };
+      inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
+    };
 
     cross-mingwW64 = {
       path = "cross.nix";
