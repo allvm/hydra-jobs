@@ -39,22 +39,7 @@ let
     cross-musl64 = {
       path = "cross.nix";
       inputs.crossSystemExampleName = { type = "string"; value = "musl64"; };
-      inputs.nixpkgs = allvm.override { branch = "experimental/cross-musl"; };
-    };
-    cross-musl64-basics = {
-      path = "cross.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "musl64"; };
-      inputs.nixpkgs = allvm.override { branch = "feature/musl-basics"; };
-    };
-    cross-musl64-more = {
-      path = "cross.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "musl64"; };
       inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
-    };
-    cross-musl64-ben = {
-      path = "cross.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "musl64"; };
-      inputs.nixpkgs = allvm.override { branch = "experimental/cross-musl-plus-ben"; };
     };
 
     cross-muslpi = {
@@ -70,15 +55,12 @@ let
       inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
     };
 
-    cross-mingwW64 = {
-      path = "cross.nix";
-      enabled = "0";
-      inputs.crossSystemExampleName = { type = "string"; value = "mingwW64"; };
-      inputs.nixpkgs = {
-        type = "git";
-        value = "https://github.com/dtzWill/nixpkgs fix/cross-low-impact";
-      };
-    };
+    #cross-mingwW64 = {
+    #  path = "cross.nix";
+    #  enabled = "0";
+    #  inputs.crossSystemExampleName = { type = "string"; value = "mingwW64"; };
+    #  inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
+    #};
 
     musl64-native = {
       path = "musl-all.nix";
