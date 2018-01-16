@@ -63,7 +63,7 @@ rec {
     gcc = all;
     gcj = linux;
     glibc = linux;
-    glibcLocales = linux;
+    # glibcLocales = linux;
     gnat = linux;
     gnugrep = all;
     gnum4 = all;
