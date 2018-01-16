@@ -94,15 +94,6 @@ let
       inputs.defaultLd = { type = "string"; value = "gold"; };
     };
 
-    /*
-    hydra-jobs-master = {
-      keep = 3;
-      shares = 420;
-    };
-    hydra-jobs-production = recursiveUpdate hydra-jobs-master {
-      inputs.nixpkgs.value = "${defaultSettings.inputs.nixpkgs.value} production";
-    };
-    */
     nixpkgs-manual = {
       path = "manual.nix";
       enabled = "0";
