@@ -57,22 +57,6 @@ let
       inputs.nixpkgs = allvm.override { branch = "experimental/cross-musl-plus-ben"; };
     };
 
-    cross-rpi-master = {
-      path = "cross.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "raspberryPi"; };
-      inputs.nixpkgs = {
-        type = "git";
-        value = "https://github.com/dtzWill/nixpkgs";
-      };
-    };
-    cross-rpi-wip = {
-      path = "cross.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "raspberryPi"; };
-      inputs.nixpkgs = {
-        type = "git";
-        value = "https://github.com/dtzWill/nixpkgs fix/cross-low-impact";
-      };
-    };
     cross-muslpi = {
       path = "cross.nix";
       inputs.crossSystemExampleName = { type = "string"; value = "muslpi"; };
