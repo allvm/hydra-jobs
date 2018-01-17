@@ -1,9 +1,10 @@
-{ nixpkgs, allvm-tools-src }:
+{ nixpkgs, allvm-tools-src, llvmVersion ? 4 }:
 
 let
   config = { allowUnfree = false; };
   lib = import (nixpkgs + "/lib");
   buildALLVMWith = pkgs: pkgs.callPackage ./support/allvm-tools {
+    inherit (pkgs."llvmPackages_${toString llvmVersion}") llvm lld;
     src = allvm-tools-src;
     clang-format = pkgs.buildPackages.clang.cc;
     buildDocs = false;
