@@ -76,9 +76,8 @@ let
       inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
     };
 
-    allvm-tools-aarch64 = {
+    allvm-tools-cross= {
       path = "allvm-tools.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "aarch64-multiplatform-musl"; };
       inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
       inputs.allvm-tools-src = allvm-tools;
     };
