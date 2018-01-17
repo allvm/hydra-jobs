@@ -45,6 +45,7 @@ stdenv.mkDerivation ({
 
   cmakeFlags = [
     "-DGITVERSION=${versionSuffix}"
+    #"-DCMAKE_VERBOSE_MAKEFILE=1"
   ] ++ stdenv.lib.optional (clang-format != null) "-DCLANGFORMAT=${clang-format}/bin/clang-format";
 
   # If we had a 'check' target we wouldn't need to specify what to do,
