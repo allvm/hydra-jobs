@@ -37,7 +37,8 @@ stdenv.mkDerivation ({
   hardeningDisable = stdenv.lib.optional disableHardening "all";
 
   nativeBuildInputs = [ clang-format python2 cmake ]
-    ++ stdenv.lib.optionals buildDocs [ tex pandoc ];
+    ++ stdenv.lib.optionals buildDocs [ tex pandoc ]
+    ++ stdenv.lib.optional stripReferences nukeReferences;
   buildInputs = [ zlib llvm lld ];
 
   doCheck = true; # not cross
@@ -62,7 +63,7 @@ stdenv.mkDerivation ({
   '';
 
   postInstall = stdenv.lib.optionalString stripReferences ''
-    ${nukeReferences}/bin/nuke-refs -e ${stdenv.cc.libc.out} -e ${zlib} -e $out $out/bin/* $out/lib/*
+    nuke-refs -e ${stdenv.cc.libc.out} -e ${zlib} -e $out $out/bin/* $out/lib/*
   '';
 
 } // stdenv.lib.optionalAttrs stripReferences {
