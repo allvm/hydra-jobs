@@ -21,9 +21,10 @@ let
 in {
   allvm-tools-cross = lib.mapAttrs buildToolsFor {
     inherit (lib.systems.examples)
+      aarch64-multiplatform-musl
       musl64
       muslpi
-      aarch64-multiplatform-musl
+      openwrt-ar71xx
       ;
   };
   allvm-tools-native = lib.mapAttrs buildToolsOn {
