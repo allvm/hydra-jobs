@@ -9,6 +9,10 @@ let
       src = allvm-tools-src;
       clang-format = pkgs.buildPackages.clang.cc;
       buildDocs = false;
+      # TODO: Enable this!
+      # (our cross-built LLVM's are built with full dependencies on dynamic libraries
+      #  that aren't included as allowed references such as ncursesw, etc.)
+      stripReferences = false;
     };
   in lib.mapAttrs buildToolsFor {
     inherit (lib.systems.examples)
