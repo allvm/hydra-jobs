@@ -6,7 +6,7 @@ let
   buildALLVMWith = pkgs: pkgs.callPackage ./support/allvm-tools {
     inherit (pkgs."llvmPackages_${toString llvmVersion}") llvm lld;
     src = allvm-tools-src;
-    clang-format = pkgs.buildPackages.clang.cc;
+    clang-format = pkgs.buildPackages."clang_${toString llvmVersion}".cc;
     buildDocs = false;
     # TODO: Enable this!
     # (our cross-built LLVM's are built with full dependencies on dynamic libraries
