@@ -59,7 +59,7 @@ stdenv.mkDerivation ({
     make check-format
   '';
 
-  postBuild = ''
+  postBuild = stdenv.lib.optionalString (!stdenv.isMips) ''
     paxmark m bin/alley
   '';
 
