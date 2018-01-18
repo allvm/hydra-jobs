@@ -73,6 +73,16 @@ let
       inputs.nixpkgs = nixpkgs-musl;
     };
 
+    musl64-cleanup-small = {
+      path = "musl-small.nix";
+      inputs.nixpkgs = nixpkgs-musl-cleanup;
+    };
+    musl64-cleanup-misc = {
+      path = "musl-misc.nix";
+      inputs.nixpkgs = nixpkgs-musl-cleanup;
+    };
+
+    # =====================================================
     allvm-tools-cross= {
       path = "allvm-tools.nix";
       inputs.nixpkgs = nixpkgs-musl;
