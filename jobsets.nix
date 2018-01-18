@@ -28,6 +28,7 @@ let
   };
   allvm = gitlab { repo = "allvm-nixpkgs"; };
   allvm-tools = gitlab { repo = "allvm"; };
+  nixpkgs-musl = allvm.override { branch = "feature/musl"; };
   jobsetsAttrs = with pkgs.lib; mapAttrs (name: settings: recursiveUpdate defaultSettings settings) (rec {
     #bootstrap-tools = {
     #  keep = 2;
@@ -39,51 +40,51 @@ let
     cross-musl64 = {
       path = "cross.nix";
       inputs.crossSystemExampleName = { type = "string"; value = "musl64"; };
-      inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
+      inputs.nixpkgs = nixpkgs-musl;
     };
 
     cross-muslpi = {
       path = "cross.nix";
       inputs.crossSystemExampleName = { type = "string"; value = "muslpi"; };
       inputs.bootstrapName = { type = "string"; value = "armv6l-musl"; };
-      inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
+      inputs.nixpkgs = nixpkgs-musl;
     };
     cross-aarch64-musl = {
       path = "cross.nix";
       inputs.crossSystemExampleName = { type = "string"; value = "aarch64-multiplatform-musl"; };
       inputs.bootstrapName = { type = "string"; value = "aarch64-musl"; };
-      inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
+      inputs.nixpkgs = nixpkgs-musl;
     };
 
     cross-mingwW64 = {
       path = "cross.nix";
       enabled = "0";
       inputs.crossSystemExampleName = { type = "string"; value = "mingwW64"; };
-      inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
+      inputs.nixpkgs = nixpkgs-musl;
     };
 
     musl64-native = {
       path = "musl-all.nix";
       enabled = "0";
-      inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
+      inputs.nixpkgs = nixpkgs-musl;
     };
     musl64-native-small = {
       path = "musl-small.nix";
-      inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
+      inputs.nixpkgs = nixpkgs-musl;
     };
     musl64-native-misc = {
       path = "musl-misc.nix";
-      inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
+      inputs.nixpkgs = nixpkgs-musl;
     };
 
     allvm-tools-cross= {
       path = "allvm-tools.nix";
-      inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
+      inputs.nixpkgs = nixpkgs-musl;
       inputs.allvm-tools-src = allvm-tools;
     };
     allvm-tools-llvm5 = {
       path = "allvm-tools.nix";
-      inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
+      inputs.nixpkgs = nixpkgs-musl;
       inputs.allvm-tools-src = allvm-tools.override { branch = "experimental/llvm-5"; };
       inputs.llvmVersion = { type = "nix"; value = "5"; };
     };
@@ -96,7 +97,7 @@ let
     nixpkgs-manual-musl = {
       path = "manual.nix";
       enabled = "0";
-      inputs.nixpkgs = allvm.override { branch = "feature/musl"; };
+      inputs.nixpkgs = nixpkgs-musl;
     };
 
   });
