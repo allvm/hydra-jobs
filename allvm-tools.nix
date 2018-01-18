@@ -25,7 +25,7 @@ in {
       aarch64-multiplatform-musl
       musl64
       muslpi
-      openwrt-ar71xx
+      # openwrt-ar71xx
       ;
   };
   allvm-tools-native = lib.mapAttrs buildToolsOn {
