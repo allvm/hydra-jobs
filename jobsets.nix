@@ -29,6 +29,7 @@ let
   allvm = gitlab { repo = "allvm-nixpkgs"; };
   allvm-tools = gitlab { repo = "allvm"; };
   nixpkgs-musl = allvm.override { branch = "feature/musl"; };
+  nixpkgs-musl-cleanup = allvm.override { branch = "feature/musl-cleanup"; };
   jobsetsAttrs = with pkgs.lib; mapAttrs (name: settings: recursiveUpdate defaultSettings settings) (rec {
     #bootstrap-tools = {
     #  keep = 2;
@@ -63,11 +64,6 @@ let
       inputs.nixpkgs = nixpkgs-musl;
     };
 
-    musl64-native = {
-      path = "musl-all.nix";
-      enabled = "0";
-      inputs.nixpkgs = nixpkgs-musl;
-    };
     musl64-native-small = {
       path = "musl-small.nix";
       inputs.nixpkgs = nixpkgs-musl;
