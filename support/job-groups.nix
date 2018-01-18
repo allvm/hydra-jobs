@@ -208,12 +208,14 @@ rec {
 
   misc = {
     git = all;
-    python2 = all;
-    python3 = all;
     linux = all;
     nix-info = all;
     nox = all;
+    python2 = all;
+    python3 = all;
+    termite = all;
     vim = all;
+    xterm = all;
     zsh = all;
   };
 }
