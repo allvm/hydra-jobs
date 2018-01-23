@@ -5,8 +5,7 @@ let
   lib = import (nixpkgs + "/lib");
   getLLVMPkgs = pkgs: pkgs."llvmPackages_${toString llvmVersion}";
   buildALLVMWith = pkgs: pkgs.callPackage ./support/allvm-tools {
-    inherit (getLLVMPkgs pkgs) lld;
-    llvm = (getLLVMPkgs pkgs).llvm.override { debugVersion = true; };
+    inherit (getLLVMPkgs pkgs) llvm lld;
     src = allvm-tools-src;
     clang-format = (getLLVMPkgs pkgs.buildPackages).clang.cc;
     buildDocs = false;
@@ -14,7 +13,6 @@ let
     # (our cross-built LLVM's are built with full dependencies on dynamic libraries
     #  that aren't included as allowed references such as ncursesw, etc.)
     stripReferences = false;
-    debugVersion = true;
   };
 
   buildToolsFor = _: crossSystem:

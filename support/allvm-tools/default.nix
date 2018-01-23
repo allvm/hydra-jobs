@@ -13,7 +13,6 @@
 , nukeReferences ? null
 , buildDocs ? (stdenv.buildPlatform == stdenv.hostPlatform)
 , useQEMUWorkaround ? (stdenv.buildPlatform != stdenv.hostPlatform)
-, debugVersion ? false
 , pandoc ? null
 , texlive ? null
 }:
@@ -28,7 +27,6 @@ let
   };
   versionSuffix = "${toString src.revCount}-${src.shortRev}";
   version = "0.1-${versionSuffix}";
-  cmakeBuildType = if debugVersion then "Debug" else "Release";
 in
 stdenv.mkDerivation ({
   name = "allvm-tools-${version}";
@@ -46,7 +44,6 @@ stdenv.mkDerivation ({
 
   doCheck = true; # not cross
 
-  inherit cmakeBuildType;
   cmakeFlags = [
     "-DGITVERSION=${versionSuffix}"
     #"-DCMAKE_VERBOSE_MAKEFILE=1"
@@ -72,7 +69,6 @@ stdenv.mkDerivation ({
     nuke-refs -e ${stdenv.cc.libc.out} -e ${zlib} -e $out $out/bin/* $out/lib/*
   '';
 
-  dontStrip = debugVersion;
 } // stdenv.lib.optionalAttrs stripReferences {
   allowedReferences = [ stdenv.cc.libc.out zlib ];
 })
