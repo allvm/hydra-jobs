@@ -94,6 +94,11 @@ let
       inputs.nixpkgs = nixpkgs-musl;
       inputs.allvm-tools-src = allvm-tools;
     };
+    allvm-tools-cross-cleanup = {
+      path = "allvm-tools.nix";
+      inputs.nixpkgs = nixpkgs-musl-cleanup;
+      inputs.allvm-tools-src = allvm-tools;
+    };
     allvm-tools-llvm5 = {
       path = "allvm-tools.nix";
       inputs.nixpkgs = nixpkgs-musl;
