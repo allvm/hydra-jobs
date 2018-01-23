@@ -3,10 +3,11 @@
 let
   config = { allowUnfree = false; };
   lib = import (nixpkgs + "/lib");
+  getLLVMPkgs = pkgs: pkgs."llvmPackages_${toString llvmVersion}";
   buildALLVMWith = pkgs: pkgs.callPackage ./support/allvm-tools {
-    inherit (pkgs."llvmPackages_${toString llvmVersion}") llvm lld;
+    inherit (getLLVMPkgs pkgs) llvm lld;
     src = allvm-tools-src;
-    clang-format = pkgs.buildPackages."clang_${toString llvmVersion}".cc;
+    clang-format = (getLLVMPkgs pkgs.buildPackages).clang.cc;
     buildDocs = false;
     # TODO: Enable this!
     # (our cross-built LLVM's are built with full dependencies on dynamic libraries
