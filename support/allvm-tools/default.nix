@@ -12,6 +12,7 @@
 , stripReferences ? true
 , nukeReferences ? null
 , buildDocs ? (stdenv.buildPlatform == stdenv.hostPlatform)
+, useQEMUWorkaround ? (stdenv.buildPlatform != stdenv.hostPlatform)
 , pandoc ? null
 , texlive ? null
 }:
@@ -46,7 +47,8 @@ stdenv.mkDerivation ({
   cmakeFlags = [
     "-DGITVERSION=${versionSuffix}"
     #"-DCMAKE_VERBOSE_MAKEFILE=1"
-  ] ++ stdenv.lib.optional (clang-format != null) "-DCLANGFORMAT=${clang-format}/bin/clang-format";
+  ] ++ stdenv.lib.optional (clang-format != null) "-DCLANGFORMAT=${clang-format}/bin/clang-format"
+    ++ stdenv.lib.optional useQEMUWorkaround "-DUSE_QEMU_FEXECVE_WORKAROUND=ON";
 
   # If we had a 'check' target we wouldn't need to specify what to do,
   # but since folks might not build with clang-format available the check-format
