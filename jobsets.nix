@@ -56,6 +56,12 @@ let
       inputs.bootstrapName = { type = "string"; value = "aarch64-musl"; };
       inputs.nixpkgs = nixpkgs-musl;
     };
+    cross-aarch64-musl-cleanup = {
+      path = "cross.nix";
+      inputs.crossSystemExampleName = { type = "string"; value = "aarch64-multiplatform-musl"; };
+      inputs.bootstrapName = { type = "string"; value = "aarch64-musl"; };
+      inputs.nixpkgs = nixpkgs-musl-cleanup;
+    };
 
     cross-mingwW64 = {
       path = "cross.nix";
