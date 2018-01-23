@@ -25,7 +25,7 @@ let
     inherit (texlive) scheme-medium;
   };
   versionSuffix = "${toString src.revCount}-${src.shortRev}";
-  version = "0.0.0-${versionSuffix}";
+  version = "0.1-${versionSuffix}";
 in
 stdenv.mkDerivation ({
   name = "allvm-tools-${version}";
