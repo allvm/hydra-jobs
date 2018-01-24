@@ -213,6 +213,7 @@ rec {
     nox = all;
     python2 = all;
     python3 = all;
+    rhash = all;
     termite = all;
     vim = all;
     xterm = all;
