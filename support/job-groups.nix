@@ -207,6 +207,7 @@ rec {
   };
 
   misc = {
+    linuxPackages.cpupower = all;
     git = all;
     linux = all;
     nix-info = all;
