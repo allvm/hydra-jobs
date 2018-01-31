@@ -43,6 +43,11 @@ let
       inputs.crossSystemExampleName = { type = "string"; value = "musl64"; };
       inputs.nixpkgs = nixpkgs-musl;
     };
+    cross-musl64-cleanup = {
+      path = "cross.nix";
+      inputs.crossSystemExampleName = { type = "string"; value = "musl64"; };
+      inputs.nixpkgs = nixpkgs-musl-cleanup;
+    };
 
     cross-muslpi = {
       path = "cross.nix";
