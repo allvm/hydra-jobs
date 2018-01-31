@@ -105,12 +105,6 @@ let
       inputs.allvm-tools-src = allvm-tools.override { branch = "experimental/llvm-5"; };
       inputs.llvmVersion = { type = "nix"; value = "5"; };
     };
-    allvm-tools-llvm6 = {
-      path = "allvm-tools.nix";
-      inputs.nixpkgs = nixpkgs-musl;
-      inputs.allvm-tools-src = allvm-tools.override { branch = "experimental/llvm-4"; };
-      inputs.llvmVersion = { type = "nix"; value = "6"; };
-    };
 
     nixpkgs-manual = {
       path = "manual.nix";
