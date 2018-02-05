@@ -206,6 +206,17 @@ rec {
     llvm_5 = all;
   };
 
+  servers = {
+    mariadb = all;
+    memcached = all;
+    nginxMainline = all;
+    nginxStable = all;
+    openntpd = all;
+    postgresql = all;
+    siege = all;
+    squid4 = all;
+  };
+
   misc = {
     linuxPackages.cpupower = all;
     git = all;
