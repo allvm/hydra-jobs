@@ -214,6 +214,7 @@ rec {
     openntpd = all;
     postgresql = all;
     siege = all;
+    squid = all;
     squid4 = all;
   };
 

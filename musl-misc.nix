@@ -15,10 +15,7 @@ in
   with import ./support/job-groups.nix release-lib;
 
 {
-  servers = mapTestOn {
-    squid = linux;
-    squid4 = linux;
-  };
+  servers = mapTestOn servers;
 
   crypto = mapTestOn {
     cyrus_sasl = linux;
