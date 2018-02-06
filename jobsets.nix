@@ -74,7 +74,7 @@ let
       path = "cross.nix";
       inputs.crossSystemExampleName = { type = "string"; value = "muslpi"; };
       inputs.bootstrapName = { type = "string"; value = "armv6l-musl"; };
-      inputs.nixpkgs = nixpkgs-musl-PR;
+      inputs.nixpkgs = nixpkgs-musl-pr;
     };
 
     cross-aarch64-musl = {
@@ -93,7 +93,7 @@ let
       path = "cross.nix";
       inputs.crossSystemExampleName = { type = "string"; value = "aarch64-multiplatform-musl"; };
       inputs.bootstrapName = { type = "string"; value = "aarch64-musl"; };
-      inputs.nixpkgs = nixpkgs-musl-PR;
+      inputs.nixpkgs = nixpkgs-musl-pr;
     };
 
     cross-mingwW64 = {
@@ -123,11 +123,11 @@ let
 
     musl64-PR-small = {
       path = "musl-small.nix";
-      inputs.nixpkgs = nixpkgs-musl-cleanup;
+      inputs.nixpkgs = nixpkgs-musl-pr;
     };
     musl64-PR-misc = {
       path = "musl-misc.nix";
-      inputs.nixpkgs = nixpkgs-musl-cleanup;
+      inputs.nixpkgs = nixpkgs-musl-pr;
     };
 
     # =====================================================
