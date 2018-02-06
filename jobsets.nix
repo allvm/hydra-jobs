@@ -30,6 +30,10 @@ let
   allvm-tools = gitlab { repo = "allvm"; };
   nixpkgs-musl = allvm.override { branch = "feature/musl"; };
   nixpkgs-musl-cleanup = allvm.override { branch = "feature/musl-cleanup"; };
+  nixpkgs-musl-pr = {
+    type = "git";
+    value = "https://github.com/dtzWill/nixpkgs feature/musl";
+  };
   jobsetsAttrs = with pkgs.lib; mapAttrs (name: settings: recursiveUpdate defaultSettings settings) (rec {
     #bootstrap-tools = {
     #  keep = 2;
@@ -48,6 +52,11 @@ let
       inputs.crossSystemExampleName = { type = "string"; value = "musl64"; };
       inputs.nixpkgs = nixpkgs-musl-cleanup;
     };
+    cross-musl64-PR = {
+      path = "cross.nix";
+      inputs.crossSystemExampleName = { type = "string"; value = "musl64"; };
+      inputs.nixpkgs = nixpkgs-musl-pr;
+    };
 
     cross-muslpi = {
       path = "cross.nix";
@@ -55,6 +64,19 @@ let
       inputs.bootstrapName = { type = "string"; value = "armv6l-musl"; };
       inputs.nixpkgs = nixpkgs-musl;
     };
+    cross-muslpi-cleanup = {
+      path = "cross.nix";
+      inputs.crossSystemExampleName = { type = "string"; value = "muslpi"; };
+      inputs.bootstrapName = { type = "string"; value = "armv6l-musl"; };
+      inputs.nixpkgs = nixpkgs-musl-cleanup;
+    };
+    cross-muslpi-PR = {
+      path = "cross.nix";
+      inputs.crossSystemExampleName = { type = "string"; value = "muslpi"; };
+      inputs.bootstrapName = { type = "string"; value = "armv6l-musl"; };
+      inputs.nixpkgs = nixpkgs-musl-PR;
+    };
+
     cross-aarch64-musl = {
       path = "cross.nix";
       inputs.crossSystemExampleName = { type = "string"; value = "aarch64-multiplatform-musl"; };
@@ -66,6 +88,12 @@ let
       inputs.crossSystemExampleName = { type = "string"; value = "aarch64-multiplatform-musl"; };
       inputs.bootstrapName = { type = "string"; value = "aarch64-musl"; };
       inputs.nixpkgs = nixpkgs-musl-cleanup;
+    };
+    cross-aarch64-musl-PR = {
+      path = "cross.nix";
+      inputs.crossSystemExampleName = { type = "string"; value = "aarch64-multiplatform-musl"; };
+      inputs.bootstrapName = { type = "string"; value = "aarch64-musl"; };
+      inputs.nixpkgs = nixpkgs-musl-PR;
     };
 
     cross-mingwW64 = {
@@ -89,6 +117,15 @@ let
       inputs.nixpkgs = nixpkgs-musl-cleanup;
     };
     musl64-cleanup-misc = {
+      path = "musl-misc.nix";
+      inputs.nixpkgs = nixpkgs-musl-cleanup;
+    };
+
+    musl64-PR-small = {
+      path = "musl-small.nix";
+      inputs.nixpkgs = nixpkgs-musl-cleanup;
+    };
+    musl64-PR-misc = {
       path = "musl-misc.nix";
       inputs.nixpkgs = nixpkgs-musl-cleanup;
     };
