@@ -3,6 +3,7 @@
 let
   config = { allowUnfree = false; };
   lib = import (nixpkgs + "/lib");
+  examples = lib.systems.examples // { musl32 = { config = "i686-unknown-linux-musl"; }; };
   getLLVMPkgs = pkgs: pkgs."llvmPackages_${toString llvmVersion}";
   buildALLVMWith = pkgs: pkgs.callPackage ./support/allvm-tools {
     inherit (getLLVMPkgs pkgs) llvm lld;
@@ -22,7 +23,7 @@ let
 
 in {
   allvm-tools-cross = lib.mapAttrs buildToolsFor {
-    inherit (lib.systems.examples)
+    inherit (examples)
       aarch64-multiplatform-musl
       musl64
       musl32
@@ -31,7 +32,7 @@ in {
       ;
   };
   allvm-tools-native = lib.mapAttrs buildToolsOn {
-    inherit (lib.systems.examples) musl64 musl32;
+    inherit (examples) musl64 musl32;
     #default = null;
   };
 }
