@@ -7,12 +7,12 @@
 }:
 
 let
-  release-lib = import ./support/release-musl-native-lib.nix {
+  release-lib = import ../support/release-musl-native-lib.nix {
     inherit supportedSystems scrubJobs nixpkgs nixpkgsArgs;
   };
 in
   with release-lib;
-  with import ./support/job-groups.nix release-lib;
+  with import ../support/job-groups.nix release-lib;
 
 {
   linuxCommon = mapTestOn linuxCommon;

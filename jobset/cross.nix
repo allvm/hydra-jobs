@@ -13,7 +13,7 @@ let release-lib = import (nixpkgs + "/pkgs/top-level/release-lib.nix") { inherit
 
 in
   with release-lib;
-  with import ./support/job-groups.nix release-lib;
+  with import ../support/job-groups.nix release-lib;
 
 let
   crossSystem = lib.systems.examples.${crossSystemExampleName};

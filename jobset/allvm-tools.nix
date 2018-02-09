@@ -5,7 +5,7 @@ let
   lib = import (nixpkgs + "/lib");
   examples = lib.systems.examples // { musl32 = { config = "i686-unknown-linux-musl"; }; };
   getLLVMPkgs = pkgs: pkgs."llvmPackages_${toString llvmVersion}";
-  buildALLVMWith = pkgs: pkgs.callPackage ./support/allvm-tools {
+  buildALLVMWith = pkgs: pkgs.callPackage ../support/allvm-tools {
     inherit (getLLVMPkgs pkgs) llvm lld;
     src = allvm-tools-src;
     clang-format = (getLLVMPkgs pkgs.buildPackages).clang.cc;

@@ -7,7 +7,7 @@
 }:
 
 let
-  release-lib = import ./support/release-musl-native-lib.nix {
+  release-lib = import ../support/release-musl-native-lib.nix {
     inherit supportedSystems scrubJobs nixpkgs nixpkgsArgs;
   };
 in
