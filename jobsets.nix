@@ -81,38 +81,32 @@ let
     cross-muslpi = {
       path = "cross.nix";
       inputs.crossSystemExampleName = { type = "string"; value = "muslpi"; };
-      inputs.bootstrapName = { type = "string"; value = "armv6l-musl"; };
       inputs.nixpkgs = nixpkgs-musl;
     };
     cross-muslpi-cleanup = {
       path = "cross.nix";
       inputs.crossSystemExampleName = { type = "string"; value = "muslpi"; };
-      inputs.bootstrapName = { type = "string"; value = "armv6l-musl"; };
       inputs.nixpkgs = nixpkgs-musl-cleanup;
     };
     cross-muslpi-PR = {
       path = "cross.nix";
       inputs.crossSystemExampleName = { type = "string"; value = "muslpi"; };
-      inputs.bootstrapName = { type = "string"; value = "armv6l-musl"; };
       inputs.nixpkgs = nixpkgs-musl-pr;
     };
 
     cross-aarch64-musl = {
       path = "cross.nix";
       inputs.crossSystemExampleName = { type = "string"; value = "aarch64-multiplatform-musl"; };
-      inputs.bootstrapName = { type = "string"; value = "aarch64-musl"; };
       inputs.nixpkgs = nixpkgs-musl;
     };
     cross-aarch64-musl-cleanup = {
       path = "cross.nix";
       inputs.crossSystemExampleName = { type = "string"; value = "aarch64-multiplatform-musl"; };
-      inputs.bootstrapName = { type = "string"; value = "aarch64-musl"; };
       inputs.nixpkgs = nixpkgs-musl-cleanup;
     };
     cross-aarch64-musl-PR = {
       path = "cross.nix";
       inputs.crossSystemExampleName = { type = "string"; value = "aarch64-multiplatform-musl"; };
-      inputs.bootstrapName = { type = "string"; value = "aarch64-musl"; };
       inputs.nixpkgs = nixpkgs-musl-pr;
     };
 
