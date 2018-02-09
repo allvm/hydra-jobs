@@ -38,118 +38,50 @@ let
     type = "git";
     value = "https://github.com/dtzWill/nixpkgs feature/musl-next";
   };
-  jobsetsAttrs = with pkgs.lib; mapAttrs (name: settings: recursiveUpdate defaultSettings settings) (rec {
+
+  crossJobset = crossSystemExampleName: nixpkgs_repo: {
+    path = "cross.nix";
+    inputs.crossSystemExampleName = { type = "string"; value = crossSystemExampleName; };
+    inputs.nixpkgs = nixpkgs_repo;
+  };
+  crossMuslJobs = name: repo: {
+    "cross-musl64-${name}" = crossJobset "musl64" repo;
+    "cross-musl32-${name}" = crossJobset "musl32" repo;
+    "cross-muslpi-${name}" = crossJobset "muslpi" repo;
+    "cross-aarch64-${name}" = crossJobset "aarch64-multiplatform-musl" repo;
+  };
+  nativeJobs = name: repo: {
+    "native-small-musl64-${name}" = {
+      path = "musl-small.nix";
+      inputs.nixpkgs = repo;
+    };
+    "native-misc-musl64-${name}" = {
+      path = "musl-misc.nix";
+      inputs.nixpkgs = repo;
+    };
+  };
+  jobsFor = name: repo:
+    (crossMuslJobs name repo) // (nativeJobs name repo);
+
+  jobsetsAttrs = with pkgs.lib; mapAttrs (name: settings: recursiveUpdate defaultSettings settings) (
+    {}
+    // (jobsFor "old" nixpkgs-musl)
+    // (jobsFor "cleanup" nixpkgs-musl-cleanup)
+    // (jobsFor "PR" nixpkgs-musl-pr)
+    // (jobsFor "next" nixpkgs-musl-next)
+    // rec {
     #bootstrap-tools = {
     #  keep = 2;
     #  input = "nixpkgs";
     #  path = "pkgs/stdenv/linux/make-bootstrap-tools.nix";
     #};
 
-    # TODO: Don't use allvm-nixpkgs repo for these
-    cross-musl64 = {
-      path = "cross.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "musl64"; };
-      inputs.nixpkgs = nixpkgs-musl;
-    };
-    cross-musl64-cleanup = {
-      path = "cross.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "musl64"; };
-      inputs.nixpkgs = nixpkgs-musl-cleanup;
-    };
-    cross-musl64-PR = {
-      path = "cross.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "musl64"; };
-      inputs.nixpkgs = nixpkgs-musl-pr;
-    };
-    cross-musl64-next = {
-      path = "cross.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "musl64"; };
-      inputs.nixpkgs = nixpkgs-musl-next;
-    };
-
-    cross-musl32-PR = {
-      path = "cross.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "musl32"; };
-      inputs.nixpkgs = nixpkgs-musl-pr;
-    };
-    cross-musl32-next = {
-      path = "cross.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "musl32"; };
-      inputs.nixpkgs = nixpkgs-musl-next;
-    };
-
-    cross-muslpi = {
-      path = "cross.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "muslpi"; };
-      inputs.nixpkgs = nixpkgs-musl;
-    };
-    cross-muslpi-cleanup = {
-      path = "cross.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "muslpi"; };
-      inputs.nixpkgs = nixpkgs-musl-cleanup;
-    };
-    cross-muslpi-PR = {
-      path = "cross.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "muslpi"; };
-      inputs.nixpkgs = nixpkgs-musl-pr;
-    };
-
-    cross-aarch64-musl = {
-      path = "cross.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "aarch64-multiplatform-musl"; };
-      inputs.nixpkgs = nixpkgs-musl;
-    };
-    cross-aarch64-musl-cleanup = {
-      path = "cross.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "aarch64-multiplatform-musl"; };
-      inputs.nixpkgs = nixpkgs-musl-cleanup;
-    };
-    cross-aarch64-musl-PR = {
-      path = "cross.nix";
-      inputs.crossSystemExampleName = { type = "string"; value = "aarch64-multiplatform-musl"; };
-      inputs.nixpkgs = nixpkgs-musl-pr;
-    };
 
     cross-mingwW64 = {
       path = "cross.nix";
       enabled = "0";
       inputs.crossSystemExampleName = { type = "string"; value = "mingwW64"; };
       inputs.nixpkgs = nixpkgs-musl;
-    };
-
-    musl64-native-small = {
-      path = "musl-small.nix";
-      inputs.nixpkgs = nixpkgs-musl;
-    };
-    musl64-native-misc = {
-      path = "musl-misc.nix";
-      inputs.nixpkgs = nixpkgs-musl;
-    };
-
-    musl64-cleanup-small = {
-      path = "musl-small.nix";
-      inputs.nixpkgs = nixpkgs-musl-cleanup;
-    };
-    musl64-cleanup-misc = {
-      path = "musl-misc.nix";
-      inputs.nixpkgs = nixpkgs-musl-cleanup;
-    };
-
-    musl64-PR-small = {
-      path = "musl-small.nix";
-      inputs.nixpkgs = nixpkgs-musl-pr;
-    };
-    musl64-PR-misc = {
-      path = "musl-misc.nix";
-      inputs.nixpkgs = nixpkgs-musl-pr;
-    };
-    musl64-next-small = {
-      path = "musl-small.nix";
-      inputs.nixpkgs = nixpkgs-musl-next;
-    };
-    musl64-next-misc = {
-      path = "musl-misc.nix";
-      inputs.nixpkgs = nixpkgs-musl-next;
     };
 
     # =====================================================
