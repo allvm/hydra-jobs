@@ -2,7 +2,7 @@
 
 let
   pkgs = import nixpkgs {};
-  gitlab = import ./support/gitlab.nix { inherit (pkgs) lib; };
+  gitlab = import ../support/gitlab.nix { inherit (pkgs) lib; };
   defaultSettings = {
     enabled = "1";
     hidden = false;
@@ -26,6 +26,8 @@ let
     mail = false;
     mailOverride = ""; # devnull+hydra@wdtz.org";
   };
+
+  ## Git repo definitions, aliases
   allvm = gitlab { repo = "allvm-nixpkgs"; };
   allvm-tools = gitlab { repo = "allvm"; };
   nixpkgs-musl = allvm.override { branch = "feature/musl"; };
@@ -39,8 +41,9 @@ let
     value = "https://github.com/dtzWill/nixpkgs feature/musl-next";
   };
 
+  ## Jobset generation
   crossJobset = crossSystemExampleName: nixpkgs_repo: {
-    path = "cross.nix";
+    path = "jobset/cross.nix";
     inputs.crossSystemExampleName = { type = "string"; value = crossSystemExampleName; };
     inputs.nixpkgs = nixpkgs_repo;
   };
@@ -52,11 +55,11 @@ let
   };
   nativeJobs = name: repo: {
     "native-small-musl64-${name}" = {
-      path = "musl-small.nix";
+      path = "jobset/musl-small.nix";
       inputs.nixpkgs = repo;
     };
     "native-misc-musl64-${name}" = {
-      path = "musl-misc.nix";
+      path = "jobset/musl-misc.nix";
       inputs.nixpkgs = repo;
     };
   };
@@ -78,7 +81,7 @@ let
 
 
     cross-mingwW64 = {
-      path = "cross.nix";
+      path = "jobset/cross.nix";
       enabled = "0";
       inputs.crossSystemExampleName = { type = "string"; value = "mingwW64"; };
       inputs.nixpkgs = nixpkgs-musl;
@@ -86,40 +89,40 @@ let
 
     # =====================================================
     allvm-tools-cross= {
-      path = "allvm-tools.nix";
+      path = "jobset/allvm-tools.nix";
       inputs.nixpkgs = nixpkgs-musl-pr;
       inputs.allvm-tools-src = allvm-tools;
     };
     allvm-tools-cross-next = {
-      path = "allvm-tools.nix";
+      path = "jobset/allvm-tools.nix";
       inputs.nixpkgs = nixpkgs-musl-next;
       inputs.allvm-tools-src = allvm-tools;
     };
     allvm-tools-cross-cleanup = {
-      path = "allvm-tools.nix";
+      path = "jobset/allvm-tools.nix";
       inputs.nixpkgs = nixpkgs-musl-cleanup;
       inputs.allvm-tools-src = allvm-tools;
     };
     allvm-tools-llvm5 = {
-      path = "allvm-tools.nix";
+      path = "jobset/allvm-tools.nix";
       inputs.nixpkgs = nixpkgs-musl-pr;
       inputs.allvm-tools-src = allvm-tools.override { branch = "experimental/llvm-5"; };
       inputs.llvmVersion = { type = "nix"; value = "5"; };
     };
     allvm-tools-llvm5-next = {
-      path = "allvm-tools.nix";
+      path = "jobset/allvm-tools.nix";
       inputs.nixpkgs = nixpkgs-musl-next;
       inputs.allvm-tools-src = allvm-tools.override { branch = "experimental/llvm-5"; };
       inputs.llvmVersion = { type = "nix"; value = "5"; };
     };
 
     nixpkgs-manual = {
-      path = "manual.nix";
+      path = "jobset/manual.nix";
       enabled = "0";
     };
 
     nixpkgs-manual-musl = {
-      path = "manual.nix";
+      path = "jobset/manual.nix";
       enabled = "0";
       inputs.nixpkgs = nixpkgs-musl;
     };

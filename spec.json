@@ -1,9 +1,9 @@
 {
     "enabled": 1,
     "hidden": false,
-    "description": "Jobsets",
+    "description": "Cross",
     "nixexprinput": "src",
-    "nixexprpath": "jobsets.nix",
+    "nixexprpath": "projects/cross.nix",
     "checkinterval": 300,
     "schedulingshares": 100,
     "enableemail": false,
