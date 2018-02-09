@@ -25,14 +25,13 @@ in {
     inherit (lib.systems.examples)
       aarch64-multiplatform-musl
       musl64
+      musl32
       muslpi
       # openwrt-ar71xx
       ;
-    musl32 = { config = "i686-unknown-linux-musl"; };
   };
   allvm-tools-native = lib.mapAttrs buildToolsOn {
-    inherit (lib.systems.examples) musl64;
+    inherit (lib.systems.examples) musl64 musl32;
     #default = null;
-    musl32 = { config = "i686-unknown-linux-musl"; };
   };
 }
