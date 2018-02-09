@@ -34,6 +34,10 @@ let
     type = "git";
     value = "https://github.com/dtzWill/nixpkgs feature/musl";
   };
+  nixpkgs-musl-next = {
+    type = "git";
+    value = "https://github.com/dtzWill/nixpkgs feature/musl-next";
+  };
   jobsetsAttrs = with pkgs.lib; mapAttrs (name: settings: recursiveUpdate defaultSettings settings) (rec {
     #bootstrap-tools = {
     #  keep = 2;
@@ -57,10 +61,15 @@ let
       inputs.crossSystemExampleName = { type = "string"; value = "musl64"; };
       inputs.nixpkgs = nixpkgs-musl-pr;
     };
-    cross-musl32-PR = {
+    cross-musl64-next = {
+      path = "cross.nix";
+      inputs.crossSystemExampleName = { type = "string"; value = "musl64"; };
+      inputs.nixpkgs = nixpkgs-musl-next;
+    };
+    cross-musl32-next = {
       path = "cross.nix";
       inputs.crossSystemExampleName = { type = "string"; value = "musl32"; };
-      inputs.nixpkgs = nixpkgs-musl-pr;
+      inputs.nixpkgs = nixpkgs-musl-next;
     };
 
     cross-muslpi = {
@@ -133,6 +142,14 @@ let
     musl64-PR-misc = {
       path = "musl-misc.nix";
       inputs.nixpkgs = nixpkgs-musl-pr;
+    };
+    musl64-next-small = {
+      path = "musl-small.nix";
+      inputs.nixpkgs = nixpkgs-musl-next;
+    };
+    musl64-next-misc = {
+      path = "musl-misc.nix";
+      inputs.nixpkgs = nixpkgs-musl-next;
     };
 
     # =====================================================
