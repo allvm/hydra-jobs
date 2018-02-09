@@ -2,44 +2,12 @@
 
 let
   pkgs = import nixpkgs {};
-  gitlab = import ../support/gitlab.nix { inherit (pkgs) lib; };
-  defaultSettings = {
-    enabled = "1";
-    hidden = false;
-    description = "";
-    input = "jobs";
-    path = "default.nix";
-    keep = 0;
-    shares = 42;
-    interval = 300;
-    inputs = {
-      jobs = gitlab { group = "dtz"; repo = "hydra-jobs"; };
-      nixpkgs = {
-        type = "git";
-        value = "git://github.com/NixOS/nixpkgs";
-      };
-      supportedSystems = {
-        type = "nix";
-        value = ''[ \"x86_64-linux\" ]'';
-      };
-    };
-    mail = false;
-    mailOverride = ""; # devnull+hydra@wdtz.org";
-  };
+
+  defaultSettings = import ../support/default-settings.nix { inherit (pkgs) lib; };
 
   ## Git repo definitions, aliases
-  allvm = gitlab { repo = "allvm-nixpkgs"; };
-  allvm-tools = gitlab { repo = "allvm"; };
-  nixpkgs-musl = allvm.override { branch = "feature/musl"; };
-  nixpkgs-musl-cleanup = allvm.override { branch = "feature/musl-cleanup"; };
-  nixpkgs-musl-pr = {
-    type = "git";
-    value = "https://github.com/dtzWill/nixpkgs feature/musl";
-  };
-  nixpkgs-musl-next = {
-    type = "git";
-    value = "https://github.com/dtzWill/nixpkgs feature/musl-next";
-  };
+in with (import ../support/repos.nix { inherit (pkgs) lib; });
+let
 
   ## Jobset generation
   crossJobset = crossSystemExampleName: nixpkgs_repo: {
@@ -66,6 +34,11 @@ let
   jobsFor = name: repo:
     (crossMuslJobs name repo) // (nativeJobs name repo);
 
+  writeSpec = import ./common.nix {
+    inherit (pkgs) lib runCommand;
+    inherit declInput jobsetsAttrs;
+  };
+
   jobsetsAttrs = with pkgs.lib; mapAttrs (name: settings: recursiveUpdate defaultSettings settings) (
     {}
     // (jobsFor "old" nixpkgs-musl)
@@ -87,34 +60,6 @@ let
       inputs.nixpkgs = nixpkgs-musl;
     };
 
-    # =====================================================
-    allvm-tools-cross= {
-      path = "jobset/allvm-tools.nix";
-      inputs.nixpkgs = nixpkgs-musl-pr;
-      inputs.allvm-tools-src = allvm-tools;
-    };
-    allvm-tools-cross-next = {
-      path = "jobset/allvm-tools.nix";
-      inputs.nixpkgs = nixpkgs-musl-next;
-      inputs.allvm-tools-src = allvm-tools;
-    };
-    allvm-tools-cross-cleanup = {
-      path = "jobset/allvm-tools.nix";
-      inputs.nixpkgs = nixpkgs-musl-cleanup;
-      inputs.allvm-tools-src = allvm-tools;
-    };
-    allvm-tools-llvm5 = {
-      path = "jobset/allvm-tools.nix";
-      inputs.nixpkgs = nixpkgs-musl-pr;
-      inputs.allvm-tools-src = allvm-tools.override { branch = "experimental/llvm-5"; };
-      inputs.llvmVersion = { type = "nix"; value = "5"; };
-    };
-    allvm-tools-llvm5-next = {
-      path = "jobset/allvm-tools.nix";
-      inputs.nixpkgs = nixpkgs-musl-next;
-      inputs.allvm-tools-src = allvm-tools.override { branch = "experimental/llvm-5"; };
-      inputs.llvmVersion = { type = "nix"; value = "5"; };
-    };
 
     nixpkgs-manual = {
       path = "jobset/manual.nix";
@@ -126,36 +71,5 @@ let
       enabled = "0";
       inputs.nixpkgs = nixpkgs-musl;
     };
-
   });
-  fileContents = with pkgs.lib; ''
-    cat <<EOF
-    ${builtins.toXML declInput}
-    EOF
-    cat > $out <<EOF
-    {
-      ${concatStringsSep "," (mapAttrsToList (name: settings: ''
-        "${name}": {
-            "enabled": ${settings.enabled},
-            "hidden": ${if settings.hidden then "true" else "false"},
-            "description": "${settings.description}",
-            "nixexprinput": "${settings.input}",
-            "nixexprpath": "${settings.path}",
-            "checkinterval": ${toString settings.interval},
-            "schedulingshares": ${toString settings.shares},
-            "enableemail": ${if settings.mail then "true" else "false"},
-            "emailoverride": "${settings.mailOverride}",
-            "keepnr": ${toString settings.keep},
-            "inputs": {
-              ${concatStringsSep "," (mapAttrsToList (inputName: inputSettings: ''
-                "${inputName}": { "type": "${inputSettings.type}", "value": "${inputSettings.value}", "emailresponsible": false }
-              '') settings.inputs)}
-            }
-        }
-      '') jobsetsAttrs)}
-    }
-    EOF
-  '';
-in {
-  jobsets = pkgs.runCommand "spec.json" {} fileContents;
-}
+in writeSpec
