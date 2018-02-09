@@ -3,7 +3,6 @@
 { nixpkgs
 , supportedSystems ? [ "x86_64-linux" ]
 , crossSystemExampleName ? "musl64"
-, bootstrapName ? "x86_64-musl"
 , # Strip most of attributes when evaluating to spare memory usage
   scrubJobs ? true
 }:
@@ -17,16 +16,16 @@ in
   with import ./support/job-groups.nix release-lib;
 
 let
-  /* Cross-built bootstrap tools for every supported platform */
+  crossSystem = lib.systems.examples.${crossSystemExampleName};
+
   bootstrapTools = let
-    tools = import (nixpkgs + "/pkgs/stdenv/linux/make-bootstrap-tools-cross.nix") { system = "x86_64-linux"; };
+    tools = import (nixpkgs + "/pkgs/stdenv/linux/make-bootstrap-tools.nix") { inherit crossSystem; };
     maintainers = [ lib.maintainers.dtzWill ];
     mkBootstrapToolsJob = drv:
       assert lib.elem drv.system supportedSystems;
       hydraJob' (lib.addMetaAttrs { inherit maintainers; } drv);
   in lib.mapAttrsRecursiveCond (as: !lib.isDerivation as) (name: mkBootstrapToolsJob) tools;
 
-  crossSystem = lib.systems.examples.${crossSystemExampleName};
   mapTOC = mapTestOnCross crossSystem;
 in
 
@@ -38,5 +37,5 @@ in
 
   tests = (mapTOC (packagePlatforms pkgs)).tests;
 
-  bootstrapTools = bootstrapTools.${crossSystem.arch} or bootstrapTools.${bootstrapName};
+  inherit bootstrapTools;
 }
