@@ -155,7 +155,12 @@ let
     # =====================================================
     allvm-tools-cross= {
       path = "allvm-tools.nix";
-      inputs.nixpkgs = nixpkgs-musl;
+      inputs.nixpkgs = nixpkgs-musl-pr;
+      inputs.allvm-tools-src = allvm-tools;
+    };
+    allvm-tools-cross-next = {
+      path = "allvm-tools.nix";
+      inputs.nixpkgs = nixpkgs-musl-next;
       inputs.allvm-tools-src = allvm-tools;
     };
     allvm-tools-cross-cleanup = {
@@ -165,7 +170,13 @@ let
     };
     allvm-tools-llvm5 = {
       path = "allvm-tools.nix";
-      inputs.nixpkgs = nixpkgs-musl;
+      inputs.nixpkgs = nixpkgs-musl-pr;
+      inputs.allvm-tools-src = allvm-tools.override { branch = "experimental/llvm-5"; };
+      inputs.llvmVersion = { type = "nix"; value = "5"; };
+    };
+    allvm-tools-llvm5-next = {
+      path = "allvm-tools.nix";
+      inputs.nixpkgs = nixpkgs-musl-next;
       inputs.allvm-tools-src = allvm-tools.override { branch = "experimental/llvm-5"; };
       inputs.llvmVersion = { type = "nix"; value = "5"; };
     };
