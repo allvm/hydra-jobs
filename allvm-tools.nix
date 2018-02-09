@@ -28,9 +28,11 @@ in {
       muslpi
       # openwrt-ar71xx
       ;
+    musl32 = { config = "i686-unknown-linux-musl"; };
   };
   allvm-tools-native = lib.mapAttrs buildToolsOn {
     inherit (lib.systems.examples) musl64;
     #default = null;
+    musl32 = { config = "i686-unknown-linux-musl"; };
   };
 }
