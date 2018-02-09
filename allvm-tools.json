@@ -1,0 +1,16 @@
+{
+    "enabled": 1,
+    "hidden": false,
+    "description": "ALLVM Tools",
+    "nixexprinput": "src",
+    "nixexprpath": "projects/allvm-tools.nix",
+    "checkinterval": 300,
+    "schedulingshares": 100,
+    "enableemail": false,
+    "emailoverride": "",
+    "keepnr": 3,
+    "inputs": {
+        "src": { "type": "git", "value": "git@gitlab.engr.illinois.edu:dtz/hydra-jobs", "emailresponsible": false },
+        "nixpkgs": { "type": "git", "value": "git://github.com/NixOS/nixpkgs.git release-17.09", "emailresponsible": false }
+    }
+}
