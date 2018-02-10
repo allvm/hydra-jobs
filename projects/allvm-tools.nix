@@ -10,7 +10,10 @@ let
   defaultdefaultSettings = import ../support/default-settings.nix { inherit (pkgs) lib; };
   defaultSettings = pkgs.lib.recursiveUpdate defaultdefaultSettings {
     path = "jobset/allvm-tools.nix";
-    inputs = { inherit allvm-tools allvm-analysis; };
+    inputs = {
+      allvm-tools-src = allvm-tools;
+      allvm-analysis-src = allvm-analysis;
+    };
   };
 
   writeSpec = import ./common.nix {
@@ -21,13 +24,13 @@ let
   jobsetsAttrs = with pkgs.lib; mapAttrs (name: settings: recursiveUpdate defaultSettings settings) ({
     allvm-tools = {
       path = "default.nix";
-      input = "allvm-tools";
+      input = "allvm-tools-src";
       description = "ALLVM Tools";
       shares = 100;
     };
     allvm-analysis = {
       path = "default.nix";
-      input = "allvm-analysis";
+      input = "allvm-analysis-src";
       description = "ALLVM Analysis Tools";
       inputs.allvm-tools-src = allvm-tools;
       shares = 100;
