@@ -16,6 +16,6 @@ in rec {
     value = "https://github.com/dtzWill/nixpkgs feature/musl-next";
   };
 
-  allvm-tools = gitlab { repo = "allvm"; };
-  allvm-analysis = allvm-tools.override { branch = "experimental/allplay"; };
+  allvm-tools = gitlab { repo = "allvm"; branch = "master 1"; /* leaveDotGit */ };
+  allvm-analysis = allvm-tools.override { branch = "experimental/allplay 1"; /* leaveDotGit */ };
 }
