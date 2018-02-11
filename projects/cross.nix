@@ -45,7 +45,7 @@ let
     // (jobsFor "cleanup" nixpkgs-musl-cleanup)
     // (jobsFor "PR" nixpkgs-musl-pr)
     // (jobsFor "next" nixpkgs-musl-next)
-    // (jobsFor "lib-rebase" (nixpkgs-musl-next.override { branch = "feature/musl-lib-rebase"; }))
+    // (jobsFor "lib-rebase" nixpkgs-musl-lib-rebase)
     // rec {
     #bootstrap-tools = {
     #  keep = 2;
