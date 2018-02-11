@@ -19,6 +19,10 @@ in rec {
     type = "git";
     value = "https://github.com/dtzWill/nixpkgs feature/musl-lib-rebase";
   };
+  nixpkgs-musl-lib-no-llvm = {
+    type = "git";
+    value = "https://github.com/dtzWill/nixpkgs feature/musl-lib-no-llvm";
+  };
 
   allvm-tools = gitlab { repo = "allvm"; branch = "master 1"; /* leaveDotGit */ };
   allvm-analysis = allvm-tools.override { branch = "experimental/allplay 1"; /* leaveDotGit */ };
