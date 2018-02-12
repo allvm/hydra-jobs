@@ -49,6 +49,10 @@ let
       inputs.nixpkgs = nixpkgs-musl-cleanup;
       inputs.allvm-tools-src = allvm-tools;
     };
+    allvm-tools-cross-pr-v6 = {
+      inputs.nixpkgs = nixpkgs-musl-pr-v6;
+      inputs.allvm-tools-src = allvm-tools;
+    };
     allvm-tools-llvm5 = {
       inputs.nixpkgs = nixpkgs-musl-pr;
       inputs.allvm-tools-src = allvm-tools.override { branch = "experimental/llvm-5"; };
