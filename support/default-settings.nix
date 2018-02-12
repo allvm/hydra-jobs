@@ -10,7 +10,7 @@ in {
   path = "default.nix";
   keep = 0;
   shares = 42;
-  interval = 300;
+  interval = 600;
   inputs = {
     jobs = gitlab { group = "dtz"; repo = "hydra-jobs"; };
     nixpkgs = {
