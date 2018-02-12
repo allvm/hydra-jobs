@@ -15,9 +15,9 @@ in rec {
     type = "git";
     value = "https://github.com/dtzWill/nixpkgs feature/musl-next";
   };
-  nixpkgs-musl-lib-rebase = {
+  nixpkgs-musl-pr-v6 = {
     type = "git";
-    value = "https://github.com/dtzWill/nixpkgs feature/musl-lib-rebase";
+    value = "https://github.com/dtzWill/nixpkgs musl-pr-v6";
   };
   nixpkgs-musl-lib-no-llvm = {
     type = "git";

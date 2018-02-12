@@ -45,7 +45,7 @@ let
     // (jobsFor "cleanup" nixpkgs-musl-cleanup)
     // (jobsFor "PR" nixpkgs-musl-pr)
     // (jobsFor "next" nixpkgs-musl-next)
-    // (jobsFor "lib-rebase" nixpkgs-musl-lib-rebase)
+    // (jobsFor "PR-v6" nixpkgs-musl-pr-v6)
     // (jobsFor "lib-no-llvm" nixpkgs-musl-lib-no-llvm)
     // rec {
     #bootstrap-tools = {
