@@ -17,7 +17,7 @@ in rec {
   };
   nixpkgs-musl-pr-v6 = {
     type = "git";
-    value = "https://github.com/dtzWill/nixpkgs musl-pr-v6";
+    value = "https://github.com/dtzWill/nixpkgs refs/tags/musl-pr-v6";
   };
   nixpkgs-musl-lib-no-llvm = {
     type = "git";
