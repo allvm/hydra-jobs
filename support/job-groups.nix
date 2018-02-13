@@ -220,6 +220,7 @@ rec {
 
   misc = {
     linuxPackages.cpupower = all;
+    brotli = all;
     git = all;
     linux = all;
     nix-info = all;
