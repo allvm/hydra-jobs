@@ -55,17 +55,17 @@ let
     };
     allvm-tools-llvm5 = {
       inputs.nixpkgs = nixpkgs-musl-pr;
-      inputs.allvm-tools-src = allvm-tools.override { branch = "experimental/llvm-5"; };
+      inputs.allvm-tools-src = allvm-tools-llvm5;
       inputs.llvmVersion = { type = "nix"; value = "5"; };
     };
     allvm-tools-llvm5-pr-v6 = {
       inputs.nixpkgs = nixpkgs-musl-pr-v6;
-      inputs.allvm-tools-src = allvm-tools.override { branch = "experimental/llvm-5"; };
+      inputs.allvm-tools-src = allvm-tools-llvm5;
       inputs.llvmVersion = { type = "nix"; value = "5"; };
     };
     allvm-tools-llvm5-next = {
       inputs.nixpkgs = nixpkgs-musl-next;
-      inputs.allvm-tools-src = allvm-tools.override { branch = "experimental/llvm-5"; };
+      inputs.allvm-tools-src = allvm-tools-llvm5;
       inputs.llvmVersion = { type = "nix"; value = "5"; };
     };
   });

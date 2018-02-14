@@ -29,5 +29,7 @@ in rec {
   };
 
   allvm-tools = { type = "git"; value = "https://github.com/allvm/allvm-tools master 1"; };
+  allvm-tools-llvm5 = { type = "git"; value = "https://github.com/allvm/allvm-tools experimental/llvm-5 1"; };
+  allvm-tools-llvm6 = { type = "git"; value = "https://github.com/allvm/allvm-tools experimental/llvm-6 1"; };
   allvm-analysis = { type = "git"; value = "https://github.com/allvm/allplay master 1"; };
 }
