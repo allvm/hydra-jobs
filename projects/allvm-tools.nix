@@ -7,7 +7,7 @@ let
 in with (import ../support/repos.nix { inherit (pkgs) lib; });
 let
 
-  defaultdefaultSettings = import ../support/default-settings.nix { inherit (pkgs) lib; };
+  defaultdefaultSettings = import ../support/default-settings.nix;
   defaultSettings = pkgs.lib.recursiveUpdate defaultdefaultSettings {
     path = "jobset/allvm-tools.nix";
     inputs = {

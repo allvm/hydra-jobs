@@ -1,8 +1,4 @@
-{ lib }:
-
-let
-  gitlab = import ./gitlab.nix { inherit lib; };
-in {
+{
   enabled = "1";
   hidden = false;
   description = "";
@@ -12,10 +8,9 @@ in {
   shares = 42;
   interval = 600;
   inputs = {
-    jobs = gitlab { group = "dtz"; repo = "hydra-jobs"; };
-    nixpkgs = {
+    jobs = {
       type = "git";
-      value = "git://github.com/NixOS/nixpkgs";
+      value = "https://github.com/allvm/hydra-declarative";
     };
     supportedSystems = {
       type = "nix";

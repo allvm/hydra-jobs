@@ -3,7 +3,7 @@
 let
   pkgs = import nixpkgs {};
 
-  defaultSettings = import ../support/default-settings.nix { inherit (pkgs) lib; };
+  defaultSettings = import ../support/default-settings.nix;
 
   ## Git repo definitions, aliases
 in with (import ../support/repos.nix { inherit (pkgs) lib; });
