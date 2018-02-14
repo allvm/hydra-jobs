@@ -56,8 +56,8 @@ let
       inputs.nixpkgs = nixpkgs-musl-pr;
       inputs.allvm-tools-src = allvm-tools;
     };
-    allvm-tools-cross-next = {
-      inputs.nixpkgs = nixpkgs-musl-next;
+    allvm-tools-cross-staging = {
+      inputs.nixpkgs = nixpkgs-musl-staging;
       inputs.allvm-tools-src = allvm-tools;
     };
     allvm-tools-cross-cleanup = {
@@ -78,8 +78,8 @@ let
       inputs.allvm-tools-src = allvm-tools-llvm5;
       inputs.llvmVersion = { type = "nix"; value = "5"; };
     };
-    allvm-tools-llvm5-next = {
-      inputs.nixpkgs = nixpkgs-musl-next;
+    allvm-tools-llvm5-staging = {
+      inputs.nixpkgs = nixpkgs-musl-staging;
       inputs.allvm-tools-src = allvm-tools-llvm5;
       inputs.llvmVersion = { type = "nix"; value = "5"; };
     };
