@@ -39,14 +39,12 @@ let
       path = "default.nix";
       input = "allvm-analysis-src";
       description = "ALLVM Analysis Tools";
-      inputs.allvm-tools-src = allvm-tools;
       shares = 100;
     };
     allvm-analysis-master = {
       path = "default.nix";
       input = "allvm-analysis-src";
       description = "ALLVM Analysis Tools (nixpkgs master)";
-      inputs.allvm-tools-src = allvm-tools;
       inputs.nixpkgs = nixpkgs-master;
       shares = 100;
     };
@@ -54,33 +52,26 @@ let
     ## Build allvm-tools in various cross configurations (as well as native), using various musl branches
     allvm-tools-cross = {
       inputs.nixpkgs = nixpkgs-musl-pr;
-      inputs.allvm-tools-src = allvm-tools;
     };
     allvm-tools-cross-staging = {
       inputs.nixpkgs = nixpkgs-musl-staging;
-      inputs.allvm-tools-src = allvm-tools;
     };
     allvm-tools-cross-cleanup = {
       inputs.nixpkgs = nixpkgs-musl-cleanup;
-      inputs.allvm-tools-src = allvm-tools;
     };
     allvm-tools-cross-pr-v6 = {
       inputs.nixpkgs = nixpkgs-musl-pr-v6;
-      inputs.allvm-tools-src = allvm-tools;
     };
     allvm-tools-llvm5 = {
       inputs.nixpkgs = nixpkgs-musl-pr;
-      inputs.allvm-tools-src = allvm-tools-llvm5;
       inputs.llvmVersion = { type = "nix"; value = "5"; };
     };
     allvm-tools-llvm5-pr-v6 = {
       inputs.nixpkgs = nixpkgs-musl-pr-v6;
-      inputs.allvm-tools-src = allvm-tools-llvm5;
       inputs.llvmVersion = { type = "nix"; value = "5"; };
     };
     allvm-tools-llvm5-staging = {
       inputs.nixpkgs = nixpkgs-musl-staging;
-      inputs.allvm-tools-src = allvm-tools-llvm5;
       inputs.llvmVersion = { type = "nix"; value = "5"; };
     };
   });
