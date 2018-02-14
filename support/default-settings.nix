@@ -10,7 +10,7 @@
   inputs = {
     jobs = {
       type = "git";
-      value = "https://github.com/allvm/hydra-jobs";
+      value = "git://github.com/allvm/hydra-jobs.git";
     };
     supportedSystems = {
       type = "nix";
