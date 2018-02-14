@@ -28,6 +28,6 @@ in rec {
     value = "https://github.com/dtzWill/nixpkgs staging-musl-merged";
   };
 
-  allvm-tools = gitlab { repo = "allvm"; branch = "master 1"; /* leaveDotGit */ };
-  allvm-analysis = allvm-tools.override { branch = "experimental/allplay 1"; /* leaveDotGit */ };
+  allvm-tools = { type = "git"; value = "https://github.com/allvm/allvm-tools master 1"; };
+  allvm-analysis = { type = "git"; value = "https://github.com/allvm/allplay master 1"; };
 }
