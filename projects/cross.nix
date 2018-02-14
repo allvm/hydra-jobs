@@ -48,7 +48,7 @@ let
     // (jobsFor "PR-v6" nixpkgs-musl-pr-v6)
     // (jobsFor "lib-no-llvm" nixpkgs-musl-lib-no-llvm)
     // (jobsFor "staging" nixpkgs-musl-staging)
-    // (jobsFor "master" nixpkgs-master)
+    #// (jobsFor "master" nixpkgs-master)
     // rec {
     #bootstrap-tools = {
     #  keep = 2;

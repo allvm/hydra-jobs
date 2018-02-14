@@ -33,7 +33,7 @@ let
       input = "allvm-tools-src";
       description = "ALLVM Tools (nixpkgs master)";
       inputs.nixpkgs = nixpkgs-master;
-      shares = 100;
+      interval = 60 * 60 * 4;
     };
     allvm-analysis = {
       path = "default.nix";
@@ -46,7 +46,7 @@ let
       input = "allvm-analysis-src";
       description = "ALLVM Analysis Tools (nixpkgs master)";
       inputs.nixpkgs = nixpkgs-master;
-      shares = 100;
+      interval = 60 * 60 * 4;
     };
 
     allvm-tools-llvm5 = {
