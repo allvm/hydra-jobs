@@ -48,6 +48,7 @@ let
     // (jobsFor "PR-v6" nixpkgs-musl-pr-v6)
     // (jobsFor "lib-no-llvm" nixpkgs-musl-lib-no-llvm)
     // (jobsFor "staging" nixpkgs-musl-staging)
+    // (jobsFor "master" nixpkgs-master)
     // rec {
     #bootstrap-tools = {
     #  keep = 2;
@@ -62,7 +63,6 @@ let
       inputs.crossSystemExampleName = { type = "string"; value = "mingwW64"; };
       inputs.nixpkgs = nixpkgs-musl;
     };
-
 
     nixpkgs-manual = {
       path = "jobset/manual.nix";
