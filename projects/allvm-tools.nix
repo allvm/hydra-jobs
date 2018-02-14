@@ -52,18 +52,18 @@ let
     allvm-tools-llvm5 = {
       path = "default.nix";
       input = "allvm-tools-src";
-      inputs.allvm-tools-src = allvm-tools-llvm5
+      inputs.allvm-tools-src = allvm-tools-llvm5;
       description = "ALLVM Tools - LLVM5";
     };
     allvm-tools-llvm6 = {
       path = "default.nix";
       input = "allvm-tools-src";
-      inputs.allvm-tools-src = allvm-tools-llvm6
+      inputs.allvm-tools-src = allvm-tools-llvm6;
       description = "ALLVM Tools - LLVM6";
     };
 
     ## Build allvm-tools in various cross configurations (as well as native), using various musl branches
-    allvm-tools-cross = {
+    allvm-tools-cross-pr = {
       inputs.nixpkgs = nixpkgs-musl-pr;
     };
     allvm-tools-cross-staging = {
@@ -75,7 +75,7 @@ let
     allvm-tools-cross-pr-v6 = {
       inputs.nixpkgs = nixpkgs-musl-pr-v6;
     };
-    allvm-tools-llvm5 = {
+    allvm-tools-llvm5-pr = {
       inputs.nixpkgs = nixpkgs-musl-pr;
       inputs.llvmVersion = { type = "nix"; value = "5"; };
     };
