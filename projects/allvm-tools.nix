@@ -49,6 +49,19 @@ let
       shares = 100;
     };
 
+    allvm-tools-llvm5 = {
+      path = "default.nix";
+      input = "allvm-tools-src";
+      inputs.allvm-tools-src = allvm-tools-llvm5
+      description = "ALLVM Tools - LLVM5";
+    };
+    allvm-tools-llvm6 = {
+      path = "default.nix";
+      input = "allvm-tools-src";
+      inputs.allvm-tools-src = allvm-tools-llvm6
+      description = "ALLVM Tools - LLVM6";
+    };
+
     ## Build allvm-tools in various cross configurations (as well as native), using various musl branches
     allvm-tools-cross = {
       inputs.nixpkgs = nixpkgs-musl-pr;
