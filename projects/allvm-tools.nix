@@ -28,11 +28,26 @@ let
       description = "ALLVM Tools";
       shares = 100;
     };
+    allvm-tools-master = {
+      path = "default.nix";
+      input = "allvm-tools-src";
+      description = "ALLVM Tools (nixpkgs master)";
+      inputs.nixpkgs = nixpkgs-master;
+      shares = 100;
+    };
     allvm-analysis = {
       path = "default.nix";
       input = "allvm-analysis-src";
       description = "ALLVM Analysis Tools";
       inputs.allvm-tools-src = allvm-tools;
+      shares = 100;
+    };
+    allvm-analysis-master = {
+      path = "default.nix";
+      input = "allvm-analysis-src";
+      description = "ALLVM Analysis Tools (nixpkgs master)";
+      inputs.allvm-tools-src = allvm-tools;
+      inputs.nixpkgs = nixpkgs-master;
       shares = 100;
     };
 

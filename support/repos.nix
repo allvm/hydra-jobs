@@ -5,6 +5,10 @@ let
 in rec {
   ## Git repo definitions, aliases
   allvm = gitlab { repo = "allvm-nixpkgs"; };
+  nixpkgs-master = {
+    type = "git";
+    value = "https://github.com/NixOS/nixpkgs";
+  };
   nixpkgs-musl = allvm.override { branch = "feature/musl"; };
   nixpkgs-musl-cleanup = allvm.override { branch = "feature/musl-cleanup"; };
   nixpkgs-musl-pr = {
