@@ -61,6 +61,7 @@ rec {
     findutils = all;
     flex = all;
     gcc = all;
+    gcc7 = all;
     gcj = linux;
     glibc = linux;
     # glibcLocales = linux;
