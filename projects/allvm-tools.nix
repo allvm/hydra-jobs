@@ -2,13 +2,14 @@
 
 let
   pkgs = import nixpkgs {};
+  inherit (pkgs) lib;
 
   ## Git repo definitions, aliases
-in with (import ../support/repos.nix { inherit (pkgs) lib; });
+in with (import ../support/repos.nix { inherit lib; });
 let
 
   defaultdefaultSettings = import ../support/default-settings.nix;
-  defaultSettings = pkgs.lib.recursiveUpdate defaultdefaultSettings {
+  defaultSettings = lib.recursiveUpdate defaultdefaultSettings {
     path = "jobset/allvm-tools.nix";
     inputs = {
       allvm-tools-src = allvm-tools;
@@ -21,9 +22,20 @@ let
     inherit declInput jobsetsAttrs;
   };
 
-  inherit (pkgs.lib) recursiveUpdate;
+  inherit (lib) recursiveUpdate;
   mkJob = x: recursiveUpdate defaultSettings x // { isJob = true; };
-  jobsetsAttrs = {
+  flattenJobAttrs = x:
+    let
+      # Convert attr paths of jobs to name/settings pairs
+      isJob = as: as.isJob or false;
+      mappedToNamedJobs = lib.mapAttrsRecursiveCond
+        (as : !isJob as)
+        (path: value: { name = lib.concatStringsSep "." path; inherit value; isNamedJob = true; })
+        x;
+      isNamedJob = as: as.isNamedJob or false;
+    in lib.listToAttrs (lib.collect isNamedJob mappedToNamedJobs);
+
+  jobsetsAttrs = flattenJobAttrs {
     tools = rec {
       default = mkJob {
         path = "default.nix";
@@ -68,7 +80,7 @@ let
           with-musl-pr = recursiveUpdate base {
             inputs.nixpkgs = nixpkgs-musl-pr;
           };
-          with-staging = recurisveUpdate base {
+          with-staging = recursiveUpdate base {
             inputs.nixpkgs = nixpkgs-musl-staging;
           };
           with-cleanup = recursiveUpdate base {
