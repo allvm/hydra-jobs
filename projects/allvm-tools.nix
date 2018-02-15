@@ -21,45 +21,39 @@ let
     inherit declInput jobsetsAttrs;
   };
 
-  jobsetsAttrs = with pkgs.lib; mapAttrs (name: settings: recursiveUpdate defaultSettings settings) ({
-    tools = {
-      default = {
+  inherit (pkgs.lib) recursiveUpdate;
+  mkJob = x: recursiveUpdate defaultSettings x // { isJob = true; };
+  jobsetsAttrs = {
+    tools = rec {
+      default = mkJob {
         path = "default.nix";
         input = "allvm-tools-src";
         description = "ALLVM Tools (pinned nixpkgs)";
         shares = 100;
       };
-      with-nixpkgs-master = {
-        path = "default.nix";
-        input = "allvm-tools-src";
+      with-nixpkgs-master = recursiveUpdate default {
         description = "ALLVM Tools (nixpkgs master)";
         inputs.nixpkgs = nixpkgs-master;
         interval = 60 * 60 * 4;
       };
 
-      with-llvm5 = {
-        path = "default.nix";
-        input = "allvm-tools-src";
+      with-llvm5 = recursiveUpdate default {
         inputs.allvm-tools-src = allvm-tools-llvm5;
         description = "ALLVM Tools - LLVM5 (pinned nixpkgs)";
       };
-      with-llvm6 = {
-        path = "default.nix";
-        input = "allvm-tools-src";
+      with-llvm6 = recursiveUpdate default {
         inputs.allvm-tools-src = allvm-tools-llvm6;
         description = "ALLVM Tools - LLVM6 (pinned nixpkgs)";
       };
     };
-    allplay = {
-      default = {
+    allplay = rec {
+      default = mkJob {
         path = "default.nix";
         input = "allvm-analysis-src";
         description = "ALLVM Analysis Tools (pinned nixpkgs)";
         shares = 100;
       };
-      with-nixpkgs-master = {
-        path = "default.nix";
-        input = "allvm-analysis-src";
+      with-nixpkgs-master = recursiveUpdate default {
         description = "ALLVM Analysis Tools (nixpkgs master)";
         inputs.nixpkgs = nixpkgs-master;
         interval = 60 * 60 * 4;
@@ -68,52 +62,30 @@ let
 
 
     ## Build allvm-tools in various cross configurations (as well as native), using various musl branches
-    cross-and-native = {
-      default = {
-        with-musl-pr = {
-          inputs.nixpkgs = nixpkgs-musl-pr;
+    cross-and-native =
+      let
+        genJobs = base: {
+          with-musl-pr = recursiveUpdate base {
+            inputs.nixpkgs = nixpkgs-musl-pr;
+          };
+          with-staging = recurisveUpdate base {
+            inputs.nixpkgs = nixpkgs-musl-staging;
+          };
+          with-cleanup = recursiveUpdate base {
+            inputs.nixpkgs = nixpkgs-musl-cleanup;
+          };
         };
-        with-staging = {
-          inputs.nixpkgs = nixpkgs-musl-staging;
+      in pkgs.lib.mapAttrs (_: x: genJobs x) {
+        default = mkJob {};
+        llvm5 = mkJob {
+          allvm-tools-src = allvm-tools-llvm5;
+          llvmVersion = { type = "nix"; value = "5"; };
         };
-        with-cleanup = {
-          inputs.nixpkgs = nixpkgs-musl-cleanup;
-        };
-      };
-      llvm5 =  {
-        with-musl-pr = {
-          inputs.nixpkgs = nixpkgs-musl-pr;
-          inputs.allvm-tools-src = allvm-tools-llvm5;
-          inputs.llvmVersion = { type = "nix"; value = "5"; };
-        };
-        with-staging = {
-          inputs.nixpkgs = nixpkgs-musl-staging;
-          inputs.allvm-tools-src = allvm-tools-llvm5;
-          inputs.llvmVersion = { type = "nix"; value = "5"; };
-        };
-        with-cleanup = {
-          inputs.nixpkgs = nixpkgs-musl-cleanup;
-          inputs.allvm-tools-src = allvm-tools-llvm5;
-          inputs.llvmVersion = { type = "nix"; value = "5"; };
+        llvm6 = mkJob {
+          allvm-tools-src = allvm-tools-llvm6;
+          llvmVersion = { type = "nix"; value = "6"; };
         };
       };
-      llvm6 = {
-        with-musl-pr = {
-          inputs.nixpkgs = nixpkgs-musl-pr;
-          inputs.allvm-tools-src = allvm-tools-llvm6;
-          inputs.llvmVersion = { type = "nix"; value = "6"; };
-        };
-        with-staging = {
-          inputs.nixpkgs = nixpkgs-musl-staging;
-          inputs.allvm-tools-src = allvm-tools-llvm6;
-          inputs.llvmVersion = { type = "nix"; value = "6"; };
-        };
-        with-cleanup = {
-          inputs.nixpkgs = nixpkgs-musl-cleanup;
-          inputs.allvm-tools-src = allvm-tools-llvm6;
-          inputs.llvmVersion = { type = "nix"; value = "6"; };
-        };
-      };
-    };
-  });
+
+  };
 in writeSpec
