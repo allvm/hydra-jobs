@@ -13,7 +13,7 @@ let
     inherit (getLLVMPkgs pkgs) llvm lld;
     src = allvm-tools-src;
     clang-format = (getLLVMPkgs pkgs.buildPackages).clang.cc;
-    buildDocs = true;
+    buildDocs = false;
     # TODO: Enable this!
     # (our cross-built LLVM's are built with full dependencies on dynamic libraries
     #  that aren't included as allowed references such as ncursesw, etc.)
