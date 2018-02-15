@@ -3,7 +3,11 @@
 let
   config = { allowUnfree = false; };
   lib = import (nixpkgs + "/lib");
-  examples = lib.systems.examples // { musl32 = { config = "i686-unknown-linux-musl"; }; };
+  examples = lib.systems.examples // {
+    musl32 = { config = "i686-unknown-linux-musl"; };
+    x86_64-linux-glibc = { config = "x86_64-unknown-linux-gnu"; };
+    i686-linux-glibc = { config = "i686-unknown-linux-gnu"; };
+  };
   getLLVMPkgs = pkgs: pkgs."llvmPackages_${toString llvmVersion}";
   buildALLVMWith = pkgs: pkgs.callPackage ../support/allvm-tools {
     inherit (getLLVMPkgs pkgs) llvm lld;
@@ -32,7 +36,11 @@ in {
       ;
   };
   allvm-tools-native = lib.mapAttrs buildToolsOn {
-    inherit (examples) musl64 musl32;
-    #default = null;
+    inherit (examples)
+      musl32
+      musl64
+      i686-linux-glibc
+      x86_64-linux-glibc
+      ;
   };
 }
