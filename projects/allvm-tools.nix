@@ -25,7 +25,7 @@ let
     allvm-tools = {
       path = "default.nix";
       input = "allvm-tools-src";
-      description = "ALLVM Tools";
+      description = "ALLVM Tools (pinned nixpkgs)";
       shares = 100;
     };
     allvm-tools-master = {
@@ -38,7 +38,7 @@ let
     allvm-analysis = {
       path = "default.nix";
       input = "allvm-analysis-src";
-      description = "ALLVM Analysis Tools";
+      description = "ALLVM Analysis Tools (pinned nixpkgs)";
       shares = 100;
     };
     allvm-analysis-master = {
@@ -53,13 +53,13 @@ let
       path = "default.nix";
       input = "allvm-tools-src";
       inputs.allvm-tools-src = allvm-tools-llvm5;
-      description = "ALLVM Tools - LLVM5";
+      description = "ALLVM Tools - LLVM5 (pinned nixpkgs)";
     };
     allvm-tools-llvm6 = {
       path = "default.nix";
       input = "allvm-tools-src";
       inputs.allvm-tools-src = allvm-tools-llvm6;
-      description = "ALLVM Tools - LLVM6";
+      description = "ALLVM Tools - LLVM6 (pinned nixpkgs)";
     };
 
     ## Build allvm-tools in various cross configurations (as well as native), using various musl branches
