@@ -90,7 +90,7 @@ let
             inputs.nixpkgs = nixpkgs-llvm-musl;
           };
           with-llvm6 = recursiveUpdate base {
-            inputs.nixpkgs = nixpkgs-llvm-6;
+            inputs.nixpkgs = nixpkgs-llvm6;
           };
         };
       in pkgs.lib.mapAttrs (_: x: genJobs x) {
