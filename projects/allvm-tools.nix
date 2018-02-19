@@ -86,8 +86,9 @@ let
           with-cleanup = recursiveUpdate base {
             inputs.nixpkgs = nixpkgs-musl-cleanup;
           };
-          with-llvm-musl = recursiveUpdate base {
-            inputs.nixpkgs = nixpkgs-llvm-musl;
+          with-master = recursiveUpdate base {
+            inputs.nixpkgs = nixpkgs-master;
+            interval = 60 * 60 * 4;
           };
           with-llvm6 = recursiveUpdate base {
             inputs.nixpkgs = nixpkgs-llvm6;
