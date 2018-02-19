@@ -18,6 +18,7 @@ in rec {
   nixpkgs-musl-lib-no-llvm = nixpkgs-dtz.override { branch = "feature/musl-lib-no-llvm"; };
   nixpkgs-musl-staging = nixpkgs-dtz.override { branch = "staging-musl-merged"; };
   nixpkgs-llvm-musl = nixpkgs-dtz.override { branch = "fix/llvm-musl"; };
+  nixpkgs-llvm6 = nixpkgs-dtz.override { branch = "feature/llvm-6"; };
 
   allvm-tools = github { owner = "allvm"; repo = "allvm-tools"; branch = "master"; deepClone = true; };
   allvm-tools-llvm5 = allvm-tools.override { branch = "experimental/llvm-5"; };
