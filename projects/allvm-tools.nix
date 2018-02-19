@@ -93,12 +93,12 @@ let
       in pkgs.lib.mapAttrs (_: x: genJobs x) {
         default = mkJob {};
         llvm5 = mkJob {
-          allvm-tools-src = allvm-tools-llvm5;
-          llvmVersion = { type = "nix"; value = "5"; };
+          inputs.allvm-tools-src = allvm-tools-llvm5;
+          inputs.llvmVersion = { type = "nix"; value = "5"; };
         };
         llvm6 = mkJob {
-          allvm-tools-src = allvm-tools-llvm6;
-          llvmVersion = { type = "nix"; value = "6"; };
+          inputs.allvm-tools-src = allvm-tools-llvm6;
+          inputs.llvmVersion = { type = "nix"; value = "6"; };
         };
       };
 
