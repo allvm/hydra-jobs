@@ -31,6 +31,10 @@ in rec {
     type = "git";
     value = "https://github.com/dtzWill/nixpkgs staging-musl-merged";
   };
+  nixpkgs-llvm-musl = {
+    type = "git";
+    value = "https://github.com/dtzWill/nixpkgs fix/llvm-musl";
+  };
 
   allvm-tools = { type = "git"; value = "https://github.com/allvm/allvm-tools master 1"; };
   allvm-tools-llvm5 = { type = "git"; value = "https://github.com/allvm/allvm-tools experimental/llvm-5 1"; };
