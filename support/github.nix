@@ -8,4 +8,4 @@ let
         + lib.optionalString (branch != null) (" " + branch)
         + lib.optionalString deepClone " 1";
     };
- in lib.makeOverridable (args: genURL args)
+ in lib.makeOverridable genURL
