@@ -86,6 +86,9 @@ let
           with-cleanup = recursiveUpdate base {
             inputs.nixpkgs = nixpkgs-musl-cleanup;
           };
+          with-llvm-musl = recursiveUpdate base {
+            inputs.nixpkgs = nixpkgs-llvm-musl;
+          };
         };
       in pkgs.lib.mapAttrs (_: x: genJobs x) {
         default = mkJob {};
