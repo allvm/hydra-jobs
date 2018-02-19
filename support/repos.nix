@@ -2,42 +2,25 @@
 
 let
   gitlab = import ./gitlab.nix { inherit lib; };
+  github = import ./github.nix { inherit lib; };
 in rec {
   ## Git repo definitions, aliases
+  nixpkgs-master = github { owner = "NixOS"; repo = "nixpkgs"; };
+
   allvm = gitlab { repo = "allvm-nixpkgs"; };
-  nixpkgs-master = {
-    type = "git";
-    value = "https://github.com/NixOS/nixpkgs";
-  };
   nixpkgs-musl = allvm.override { branch = "feature/musl"; };
   nixpkgs-musl-cleanup = allvm.override { branch = "feature/musl-cleanup"; };
-  nixpkgs-musl-pr = {
-    type = "git";
-    value = "https://github.com/dtzWill/nixpkgs feature/musl";
-  };
-  nixpkgs-musl-next = {
-    type = "git";
-    value = "https://github.com/dtzWill/nixpkgs feature/musl-next";
-  };
-  nixpkgs-musl-pr-v6 = {
-    type = "git";
-    value = "https://github.com/dtzWill/nixpkgs musl-pr-6";
-  };
-  nixpkgs-musl-lib-no-llvm = {
-    type = "git";
-    value = "https://github.com/dtzWill/nixpkgs feature/musl-lib-no-llvm";
-  };
-  nixpkgs-musl-staging = {
-    type = "git";
-    value = "https://github.com/dtzWill/nixpkgs staging-musl-merged";
-  };
-  nixpkgs-llvm-musl = {
-    type = "git";
-    value = "https://github.com/dtzWill/nixpkgs fix/llvm-musl";
-  };
 
-  allvm-tools = { type = "git"; value = "https://github.com/allvm/allvm-tools master 1"; };
-  allvm-tools-llvm5 = { type = "git"; value = "https://github.com/allvm/allvm-tools experimental/llvm-5 1"; };
-  allvm-tools-llvm6 = { type = "git"; value = "https://github.com/allvm/allvm-tools experimental/llvm-6 1"; };
-  allvm-analysis = { type = "git"; value = "https://github.com/allvm/allplay master 1"; };
+  nixpkgs-dtz = github { owner = "dtzWill"; repo = "nixpkgs"; };
+  nixpkgs-musl-pr = nixpkgs-dtz.override { branch = "feature/musl"; };
+  nixpkgs-musl-next = nixpkgs-dtz.override { branch = "feature/musl-next"; };
+  nixpkgs-musl-pr-v6 = nixpkgs-dtz.override { branch = "musl-pr-6"; };
+  nixpkgs-musl-lib-no-llvm = nixpkgs-dtz.override { branch = "feature/musl-lib-no-llvm"; };
+  nixpkgs-musl-staging = nixpkgs-dtz.override { branch = "staging-musl-merged"; };
+  nixpkgs-llvm-musl = nixpkgs-dtz.override { branch = "fix/llvm-musl"; };
+
+  allvm-tools = github { owner = "allvm"; repo = "allvm-tools"; branch = "master"; deepClone = true; };
+  allvm-tools-llvm5 = allvm-tools.override { branch = "experimental/llvm-5"; };
+  allvm-tools-llvm6 = allvm-tools.override { branch = "experimental/llvm-6"; };
+  allvm-analysis = github { owner = "allvm"; repo = "allplay"; branch = "master"; deepClone = true; };
 }
