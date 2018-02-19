@@ -93,6 +93,9 @@ let
           with-llvm6 = recursiveUpdate base {
             inputs.nixpkgs = nixpkgs-llvm6;
           };
+          with-musl-git = recursiveUpdate base {
+            inputs.nixpkgs = nixpkgs-musl-git;
+          };
         };
       in pkgs.lib.mapAttrs (_: x: genJobs x) {
         default = mkJob {};

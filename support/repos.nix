@@ -19,6 +19,8 @@ in rec {
   nixpkgs-musl-staging = nixpkgs-dtz.override { branch = "staging-musl-merged"; };
   nixpkgs-llvm6 = nixpkgs-dtz.override { branch = "feature/llvm-6"; };
 
+  nixpkgs-musl-git = nixpkgs-dtz.override { branch = "experimental/musl-git"; };
+
   allvm-tools = github { owner = "allvm"; repo = "allvm-tools"; branch = "master"; deepClone = true; };
   allvm-tools-llvm5 = allvm-tools.override { branch = "experimental/llvm-5"; };
   allvm-tools-llvm6 = allvm-tools.override { branch = "experimental/llvm-6"; };
