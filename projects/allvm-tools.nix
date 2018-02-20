@@ -41,7 +41,7 @@ let
         path = "default.nix";
         input = "allvm-tools-src";
         description = "ALLVM Tools (pinned nixpkgs)";
-        shares = 100;
+        shares = 500;
       };
       with-nixpkgs-master = recursiveUpdate default {
         description = "ALLVM Tools (nixpkgs master)";
@@ -63,7 +63,7 @@ let
         path = "default.nix";
         input = "allvm-analysis-src";
         description = "ALLVM Analysis Tools (pinned nixpkgs)";
-        shares = 100;
+        shares = 500;
       };
       with-nixpkgs-master = recursiveUpdate default {
         description = "ALLVM Analysis Tools (nixpkgs master)";
