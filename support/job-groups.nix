@@ -221,6 +221,7 @@ rec {
 
   misc = {
     linuxPackages.cpupower = all;
+    bloaty = all;
     brotli = all;
     git = all;
     linux = all;
