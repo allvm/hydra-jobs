@@ -223,16 +223,26 @@ rec {
     linuxPackages.cpupower = all;
     bloaty = all;
     brotli = all;
+    curl = all;
     git = all;
+    iproute = all;
+    jq = all;
+    links2 = all;
     linux = all;
+    nettools = all;
     nix-info = all;
     nox = all;
+    psmisc = all;
     python2 = all;
     python3 = all;
     rhash = all;
+    taskwarrior = all;
     termite = all;
+    timewarrior = all;
+    tmux = all;
     vim = all;
     xterm = all;
+    xz = all;
     zsh = all;
   };
 }
