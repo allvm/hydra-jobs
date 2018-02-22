@@ -96,6 +96,9 @@ let
           with-musl-git = recursiveUpdate base {
             inputs.nixpkgs = nixpkgs-musl-git;
           };
+          with-musl-19 = recursiveUpdate base {
+            inputs.nixpkgs = nixpkgs-musl-19;
+          };
           with-nix-2 = recursiveUpdate base {
             inputs.nixpkgs  = nixpkgs-nix-2;
           };

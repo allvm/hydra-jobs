@@ -49,6 +49,7 @@ let
     #// (jobsFor "lib-no-llvm" nixpkgs-musl-lib-no-llvm)
     // (jobsFor "staging" nixpkgs-musl-staging)
     // (jobsFor "musl-git" nixpkgs-musl-git)
+    // (jobsFor "musl-1.1.19" nixpkgs-musl-19)
     #// (jobsFor "gcc7" nixpkgs-gcc7)
     // (jobsFor "gcc7-musl" nixpkgs-gcc7-musl)
     #// (jobsFor "master" nixpkgs-master)

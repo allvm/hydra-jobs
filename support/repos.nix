@@ -22,6 +22,7 @@ in rec {
   nixpkgs-gcc7-musl = nixpkgs-dtz.override { branch = "fix/gcc7-musl"; };
 
   nixpkgs-musl-git = nixpkgs-dtz.override { branch = "experimental/musl-git"; };
+  nixpkgs-musl-19 = nixpkgs-dtz.override { branch = "update/musl-1.1.19"; };
 
   nixpkgs-nix-2  = nixpkgs-master.override { branch = "nix-2.0"; };
 
