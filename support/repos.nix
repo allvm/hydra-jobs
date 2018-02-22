@@ -23,6 +23,8 @@ in rec {
 
   nixpkgs-musl-git = nixpkgs-dtz.override { branch = "experimental/musl-git"; };
 
+  nixpkgs-nix-2  = nixpkgs-master.override { branch = "nix-2.0"; };
+
   allvm-tools = github { owner = "allvm"; repo = "allvm-tools"; branch = "master"; deepClone = true; };
   allvm-tools-llvm5 = allvm-tools.override { branch = "experimental/llvm-5"; };
   allvm-tools-llvm6 = allvm-tools.override { branch = "experimental/llvm-6"; };

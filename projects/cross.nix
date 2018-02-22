@@ -52,6 +52,7 @@ let
     #// (jobsFor "gcc7" nixpkgs-gcc7)
     // (jobsFor "gcc7-musl" nixpkgs-gcc7-musl)
     #// (jobsFor "master" nixpkgs-master)
+    // (jobsFor "nix-2" nixpkgs-nix-2)
     // rec {
     #bootstrap-tools = {
     #  keep = 2;
