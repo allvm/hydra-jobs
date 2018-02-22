@@ -18,6 +18,8 @@ in rec {
   nixpkgs-musl-lib-no-llvm = nixpkgs-dtz.override { branch = "feature/musl-lib-no-llvm"; };
   nixpkgs-musl-staging = nixpkgs-dtz.override { branch = "staging-musl-merged"; };
   nixpkgs-llvm6 = nixpkgs-dtz.override { branch = "feature/llvm-6"; };
+  nixpkgs-gcc7 = nixpkgs-dtz.override { branch = "fix/gcc7"; };
+  nixpkgs-gcc7-musl = nixpkgs-dtz.override { branch = "fix/gcc7-musl"; };
 
   nixpkgs-musl-git = nixpkgs-dtz.override { branch = "experimental/musl-git"; };
 
