@@ -17,7 +17,7 @@ let
   };
   crossMuslJobs = name: repo: {
     "cross-musl64-${name}" = crossJobset "musl64" repo;
-    "cross-musl32-${name}" = crossJobset "musl32" repo;
+    #"cross-musl32-${name}" = crossJobset "musl32" repo;
     "cross-muslpi-${name}" = crossJobset "muslpi" repo;
     "cross-aarch64-${name}" = crossJobset "aarch64-multiplatform-musl" repo;
   };
@@ -43,13 +43,13 @@ let
     {}
     // (jobsFor "old" nixpkgs-musl)
     // (jobsFor "cleanup" nixpkgs-musl-cleanup)
-    // (jobsFor "PR" nixpkgs-musl-pr)
-    // (jobsFor "next" nixpkgs-musl-next)
-    // (jobsFor "PR-v6" nixpkgs-musl-pr-v6)
-    // (jobsFor "lib-no-llvm" nixpkgs-musl-lib-no-llvm)
+    #// (jobsFor "PR" nixpkgs-musl-pr)
+    #// (jobsFor "next" nixpkgs-musl-next)
+    #// (jobsFor "PR-v6" nixpkgs-musl-pr-v6)
+    #// (jobsFor "lib-no-llvm" nixpkgs-musl-lib-no-llvm)
     // (jobsFor "staging" nixpkgs-musl-staging)
     // (jobsFor "musl-git" nixpkgs-musl-git)
-    // (jobsFor "gcc7" nixpkgs-gcc7)
+    #// (jobsFor "gcc7" nixpkgs-gcc7)
     // (jobsFor "gcc7-musl" nixpkgs-gcc7-musl)
     #// (jobsFor "master" nixpkgs-master)
     // rec {
