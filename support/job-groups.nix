@@ -229,6 +229,7 @@ rec {
     jq = all;
     links2 = all;
     linux = all;
+    linux_latest = all;
     nettools = all;
     nix-info = all;
     nox = all;
