@@ -43,6 +43,13 @@ let
         description = "ALLVM Tools (pinned nixpkgs)";
         shares = 500;
       };
+      # XXX: This one is not like the others:
+      release = mkJob {
+        path = "nix/release.nix";
+        input = "allvm-tools-src";
+        description = "ALLVM Tools release.nix (pinned nixpkgs)";
+        shares = 500;
+      };
       with-nixpkgs-master = recursiveUpdate default {
         description = "ALLVM Tools (nixpkgs master)";
         inputs.nixpkgs = nixpkgs-master;
