@@ -43,15 +43,7 @@ let
     {}
     // (jobsFor "old" nixpkgs-musl)
     // (jobsFor "cleanup" nixpkgs-musl-cleanup)
-    #// (jobsFor "PR" nixpkgs-musl-pr)
-    #// (jobsFor "next" nixpkgs-musl-next)
-    #// (jobsFor "PR-v6" nixpkgs-musl-pr-v6)
-    #// (jobsFor "lib-no-llvm" nixpkgs-musl-lib-no-llvm)
     // (jobsFor "staging" nixpkgs-musl-staging)
-    // (jobsFor "musl-git" nixpkgs-musl-git)
-    // (jobsFor "musl-1.1.19" nixpkgs-musl-19)
-    #// (jobsFor "gcc7" nixpkgs-gcc7)
-    // (jobsFor "gcc7-musl" nixpkgs-gcc7-musl)
     #// (jobsFor "master" nixpkgs-master)
     // (jobsFor "nix-2" nixpkgs-nix-2)
     // rec {

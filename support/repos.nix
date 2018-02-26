@@ -12,17 +12,8 @@ in rec {
   nixpkgs-musl-cleanup = allvm.override { branch = "feature/musl-cleanup"; };
 
   nixpkgs-dtz = github { owner = "dtzWill"; repo = "nixpkgs"; };
-  nixpkgs-musl-pr = nixpkgs-dtz.override { branch = "feature/musl"; };
-  nixpkgs-musl-next = nixpkgs-dtz.override { branch = "feature/musl-next"; };
-  nixpkgs-musl-pr-v6 = nixpkgs-dtz.override { branch = "musl-pr-6"; };
-  nixpkgs-musl-lib-no-llvm = nixpkgs-dtz.override { branch = "feature/musl-lib-no-llvm"; };
   nixpkgs-musl-staging = nixpkgs-dtz.override { branch = "staging-musl-merged"; };
   nixpkgs-llvm6 = nixpkgs-dtz.override { branch = "feature/llvm-6"; };
-  nixpkgs-gcc7 = nixpkgs-dtz.override { branch = "fix/gcc7"; };
-  nixpkgs-gcc7-musl = nixpkgs-dtz.override { branch = "fix/gcc7-musl"; };
-
-  nixpkgs-musl-git = nixpkgs-dtz.override { branch = "experimental/musl-git"; };
-  nixpkgs-musl-19 = nixpkgs-dtz.override { branch = "update/musl-1.1.19"; };
 
   nixpkgs-nix-2  = nixpkgs-master.override { branch = "nix-2.0"; };
 

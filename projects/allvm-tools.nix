@@ -84,12 +84,6 @@ let
     cross-and-native =
       let
         genJobs = base: {
-          with-musl-pr = recursiveUpdate base {
-            inputs.nixpkgs = nixpkgs-musl-pr;
-          };
-          with-staging = recursiveUpdate base {
-            inputs.nixpkgs = nixpkgs-musl-staging;
-          };
           with-cleanup = recursiveUpdate base {
             inputs.nixpkgs = nixpkgs-musl-cleanup;
           };
@@ -99,12 +93,6 @@ let
           };
           with-llvm6 = recursiveUpdate base {
             inputs.nixpkgs = nixpkgs-llvm6;
-          };
-          with-musl-git = recursiveUpdate base {
-            inputs.nixpkgs = nixpkgs-musl-git;
-          };
-          with-musl-19 = recursiveUpdate base {
-            inputs.nixpkgs = nixpkgs-musl-19;
           };
           with-nix-2 = recursiveUpdate base {
             inputs.nixpkgs  = nixpkgs-nix-2;
