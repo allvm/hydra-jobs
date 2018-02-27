@@ -236,6 +236,7 @@ rec {
     psmisc = all;
     python2 = all;
     python3 = all;
+    python2Packages.csvkit = all;
     rhash = all;
     taskwarrior = all;
     termite = all;
