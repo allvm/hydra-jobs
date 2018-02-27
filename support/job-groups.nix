@@ -237,6 +237,7 @@ rec {
     python2 = all;
     python3 = all;
     python2Packages.csvkit = all;
+    python3Packages.csvkit = all;
     rhash = all;
     taskwarrior = all;
     termite = all;
