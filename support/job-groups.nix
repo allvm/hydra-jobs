@@ -241,6 +241,7 @@ rec {
     python2Packages.csvkit = all;
     python3 = all;
     python3Packages.csvkit = all;
+    range-v3 = all;
     rhash = all;
     taskwarrior = all;
     termite = all;
