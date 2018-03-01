@@ -22,6 +22,7 @@ rec {
 
   linuxCommon = lib.recursiveUpdate gnuCommon {
     buildPackages.gdb = nativePlatforms;
+    buildPackages.valgrind = nativePlatforms;
 
     bison = nativePlatforms;
     busybox = nativePlatforms;
@@ -220,7 +221,6 @@ rec {
   };
 
   misc = {
-    linuxPackages.cpupower = all;
     bloaty = all;
     brotli = all;
     curl = all;
@@ -229,14 +229,17 @@ rec {
     jq = all;
     links2 = all;
     linux = all;
+    linuxPackages.cpupower = all;
     linux_latest = all;
+    lldb_4 = all;
+    lldb_5 = all;
     nettools = all;
     nix-info = all;
     nox = all;
     psmisc = all;
     python2 = all;
-    python3 = all;
     python2Packages.csvkit = all;
+    python3 = all;
     python3Packages.csvkit = all;
     rhash = all;
     taskwarrior = all;
