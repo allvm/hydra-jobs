@@ -44,7 +44,7 @@ let
     // (jobsFor "old" nixpkgs-musl)
     // (jobsFor "cleanup" nixpkgs-musl-cleanup)
     // (jobsFor "staging" nixpkgs-musl-staging)
-    #// (jobsFor "master" nixpkgs-master)
+    // (jobsFor "dtz" nixpkgs-dtz)
     // (jobsFor "nix-2" nixpkgs-nix-2)
     // rec {
     #bootstrap-tools = {
