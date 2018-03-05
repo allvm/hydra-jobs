@@ -53,6 +53,15 @@ let
     #  path = "pkgs/stdenv/linux/make-bootstrap-tools.nix";
     #};
 
+    bootstrap-tools = {
+      input = "nixpkgs";
+      inputs.nixpkgs = nixpkgs-master;
+      path = "pkgs/stdenv/linux/make-bootstrap-tools.nix";
+      inputs.localSystem = {
+        type = "nix";
+        value = ''{config=\"x86_64-unknown-linux-musl\";}'';
+      };
+    };
 
     cross-mingwW64 = {
       path = "jobset/cross.nix";
