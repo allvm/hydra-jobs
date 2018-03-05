@@ -18,13 +18,13 @@ in
 let
   crossSystem = lib.systems.examples.${crossSystemExampleName};
 
-  bootstrapTools = let
-    tools = import (nixpkgs + "/pkgs/stdenv/linux/make-bootstrap-tools.nix") { inherit crossSystem; };
-    maintainers = [ lib.maintainers.dtzWill ];
-    mkBootstrapToolsJob = drv:
-      assert lib.elem drv.system supportedSystems;
-      hydraJob' (lib.addMetaAttrs { inherit maintainers; } drv);
-  in lib.mapAttrsRecursiveCond (as: !lib.isDerivation as) (name: mkBootstrapToolsJob) tools;
+  #bootstrapTools = let
+  #  tools = import (nixpkgs + "/pkgs/stdenv/linux/make-bootstrap-tools.nix") { inherit crossSystem; };
+  #  maintainers = [ lib.maintainers.dtzWill ];
+  #  mkBootstrapToolsJob = drv:
+  #    assert lib.elem drv.system supportedSystems;
+  #    hydraJob' (lib.addMetaAttrs { inherit maintainers; } drv);
+  #in lib.mapAttrsRecursiveCond (as: !lib.isDerivation as) (name: mkBootstrapToolsJob) tools;
 
   mapTOC = mapTestOnCross crossSystem;
 in
@@ -37,5 +37,5 @@ in
 
   tests = (mapTOC (packagePlatforms pkgs)).tests;
 
-  inherit bootstrapTools;
+  #inherit bootstrapTools;
 }
