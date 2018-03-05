@@ -41,11 +41,11 @@ let
 
   jobsetsAttrs = with pkgs.lib; mapAttrs (name: settings: recursiveUpdate defaultSettings settings) (
     {}
-    // (jobsFor "old" nixpkgs-musl)
+    #// (jobsFor "old" nixpkgs-musl)
     // (jobsFor "cleanup" nixpkgs-musl-cleanup)
-    // (jobsFor "staging" nixpkgs-musl-staging)
+    #// (jobsFor "staging" nixpkgs-musl-staging)
     // (jobsFor "dtz" nixpkgs-dtz)
-    // (jobsFor "nix-2" nixpkgs-nix-2)
+    #// (jobsFor "nix-2" nixpkgs-nix-2)
     // rec {
     #bootstrap-tools = {
     #  keep = 2;
