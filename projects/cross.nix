@@ -55,7 +55,7 @@ let
 
     bootstrap-tools = {
       input = "nixpkgs";
-      inputs.nixpkgs = nixpkgs-master;
+      inputs.nixpkgs = nixpkgs-musl-native-bootstrap;
       path = "pkgs/stdenv/linux/make-bootstrap-tools.nix";
       inputs.localSystem = {
         type = "nix";
