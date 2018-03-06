@@ -25,10 +25,12 @@ let
     "native-small-musl64-${name}" = {
       path = "jobset/musl-small.nix";
       inputs.nixpkgs = repo;
+      shares = 200;
     };
     "native-misc-musl64-${name}" = {
       path = "jobset/musl-misc.nix";
       inputs.nixpkgs = repo;
+      shares = 200;
     };
   };
   jobsFor = name: repo:
