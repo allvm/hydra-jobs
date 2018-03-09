@@ -15,6 +15,7 @@ in rec {
   nixpkgs-musl-staging = nixpkgs-dtz.override { branch = "staging-musl-merged"; };
   nixpkgs-llvm6 = nixpkgs-dtz.override { branch = "feature/llvm-6"; };
   nixpkgs-musl-native-bootstrap = nixpkgs-dtz.override { branch = "musl-native-bootstrap"; };
+  nixpkgs-musl-sanitizers = nixpkgs-dtz.override { branch = "fix/gcc7-musl-sanitizers"; };
 
   nixpkgs-nix-2  = nixpkgs-master.override { branch = "nix-2.0"; };
 
