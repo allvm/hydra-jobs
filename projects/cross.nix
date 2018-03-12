@@ -17,7 +17,7 @@ let
   };
   crossMuslJobs = name: repo: {
     "cross-musl64-${name}" = crossJobset "musl64" repo;
-    #"cross-musl32-${name}" = crossJobset "musl32" repo;
+    "cross-musl32-${name}" = crossJobset "musl32" repo;
     "cross-muslpi-${name}" = crossJobset "muslpi" repo;
     "cross-aarch64-${name}" = crossJobset "aarch64-multiplatform-musl" repo;
   };
