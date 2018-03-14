@@ -16,6 +16,7 @@ in rec {
   nixpkgs-llvm6 = nixpkgs-dtz.override { branch = "feature/llvm-6"; };
   nixpkgs-musl-native-bootstrap = nixpkgs-dtz.override { branch = "musl-native-bootstrap"; };
   nixpkgs-musl-malloc-kludge = nixpkgs-dtz.override { branch = "experimental/musl-fork-malloc-kludge"; };
+  nixpkgs-libgcc_s  = nixpkgs-dtz.override { branch = "fix/glibc-libgcc_s"; };
 
   nixpkgs-nix-2  = nixpkgs-master.override { branch = "nix-2.0"; };
 
