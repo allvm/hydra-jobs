@@ -15,7 +15,7 @@ mapTestOn (rec {
   atlas = linux;
   autoconf = all;
   automake = all;
-  avahi = allBut cygwin;  # Cygwin builds fail
+  avahi = unix; # Cygwin builds fail
   bash = all;
   bashInteractive = all;
   bc = all;
@@ -47,7 +47,7 @@ mapTestOn (rec {
   gnumake = all;
   gnupatch = all;
   gnupg = linux;
-  gnuplot = allBut cygwin;
+  gnuplot = unix; # Cygwin builds fail
   gnused = all;
   gnutar = all;
   gnutls = linux;
@@ -121,7 +121,7 @@ mapTestOn (rec {
   pkgconfig = all;
   pmccabe = linux;
   procps = linux;
-  python = allBut cygwin;
+  python = unix; # Cygwin builds fails
   readline = all;
   rlwrap = all;
   rpm = linux;
@@ -131,9 +131,9 @@ mapTestOn (rec {
   scrot = linux;
   sdparm = linux;
   sharutils = all;
-  sloccount = allBut cygwin;
+  sloccount = unix; # Cygwin builds fail
   smartmontools = all;
-  sqlite = allBut cygwin;
+  sqlite = unix; # Cygwin builds fail
   squid = linux;
   ssmtp = linux;
   stdenv = all;
