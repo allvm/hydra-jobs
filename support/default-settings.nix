@@ -14,7 +14,7 @@
     };
     supportedSystems = {
       type = "nix";
-      value = ''[ \"x86_64-linux\" \"i686-linux\" ]'';
+      value = ''[ \"x86_64-linux\" ]'';
     };
   };
   mail = false;
