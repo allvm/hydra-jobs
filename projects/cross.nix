@@ -45,7 +45,7 @@ let
     {}
     #// (jobsFor "old" nixpkgs-musl)
     // (jobsFor "cleanup" nixpkgs-musl-cleanup)
-    #// (jobsFor "staging" nixpkgs-musl-staging)
+    // (jobsFor "dtz-staging" nixpkgs-dtz-staging)
     // (jobsFor "dtz" nixpkgs-dtz)
     // (jobsFor "musl-bootstrap" nixpkgs-musl-native-bootstrap)
     // (jobsFor "musl-malloc-kludge" nixpkgs-musl-malloc-kludge)
