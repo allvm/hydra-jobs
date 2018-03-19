@@ -1,7 +1,7 @@
 
 
 { nixpkgs
-, supportedSystems ? [ "x86_64-linux" ]
+, supportedSystems ? [ "x86_64-linux" "i686-linux" ]
 , crossSystemExampleName ? "musl64"
 , # Strip most of attributes when evaluating to spare memory usage
   scrubJobs ? true
