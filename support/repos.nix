@@ -20,6 +20,7 @@ in rec {
   nixpkgs-sanitizers = nixpkgs-dtz.override { branch = "experimental/musl-sanitizers"; };
   nixpkgs-dtz-staging = nixpkgs-dtz.override { branch = "staging"; };
   nixpkgs-i686-musl = nixpkgs-dtz.override { branch = "feature/i686-musl"; };
+  nixpkgs-ghc-cross = nixpkgs-dtz.override { branch = "fix/ghc-cross-musl"; };
 
   # Not the channel, but channel is tagged from this when tests pass
   nixpkgs-18_03 = nixpkgs-master.override { branch = "release-18.03"; };
