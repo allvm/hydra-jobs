@@ -224,6 +224,7 @@ rec {
     bloaty = all;
     brotli = all;
     curl = all;
+    ghc = ghcSupported;
     git = all;
     iproute = all;
     jq = all;
