@@ -18,6 +18,7 @@ in rec {
   nixpkgs-libgcc_s  = nixpkgs-dtz.override { branch = "fix/glibc-libgcc_s"; };
   nixpkgs-sanitizers = nixpkgs-dtz.override { branch = "experimental/musl-sanitizers"; };
   nixpkgs-dtz-staging = nixpkgs-dtz.override { branch = "staging"; };
+  nixpkgs-i686-musl = nixpkgs-dtz.override { branch = "feature/i686-musl"; };
 
   nixpkgs-nix-2  = nixpkgs-master.override { branch = "nix-2.0"; };
 

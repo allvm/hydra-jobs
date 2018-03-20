@@ -51,6 +51,7 @@ let
     // (jobsFor "musl-malloc-kludge" nixpkgs-musl-malloc-kludge)
     // (jobsFor "libgcc_s" nixpkgs-libgcc_s)
     // (jobsFor "sanitizers" nixpkgs-sanitizers)
+    // (jobsFor "i686-musl" nixpkgs-i686-musl)
     #// (jobsFor "nix-2" nixpkgs-nix-2)
     // rec {
     #bootstrap-tools = {
