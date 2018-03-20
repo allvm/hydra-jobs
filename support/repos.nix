@@ -15,6 +15,7 @@ in rec {
   nixpkgs-llvm6 = nixpkgs-dtz.override { branch = "feature/llvm-6"; };
   nixpkgs-musl-native-bootstrap = nixpkgs-dtz.override { branch = "musl-native-bootstrap"; };
   nixpkgs-musl-malloc-kludge = nixpkgs-dtz.override { branch = "experimental/musl-fork-malloc-kludge"; };
+  nixpkgs-musl-malloc-kludge-merged = nixpkgs-dtz.override { branch = "experimental/musl-fork-malloc-kludge-merged"; };
   nixpkgs-libgcc_s  = nixpkgs-dtz.override { branch = "fix/glibc-libgcc_s"; };
   nixpkgs-sanitizers = nixpkgs-dtz.override { branch = "experimental/musl-sanitizers"; };
   nixpkgs-dtz-staging = nixpkgs-dtz.override { branch = "staging"; };
