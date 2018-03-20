@@ -21,6 +21,11 @@ in rec {
   nixpkgs-dtz-staging = nixpkgs-dtz.override { branch = "staging"; };
   nixpkgs-i686-musl = nixpkgs-dtz.override { branch = "feature/i686-musl"; };
 
+  # Not the channel, but channel is tagged from this when tests pass
+  nixpkgs-18_03 = nixpkgs-master.override { branch = "release-18.03"; };
+  # channel:nixos-18.03
+  nixos-18_03-channel = github { owner = "NixOS"; repo = "nixpkgs-channels"; branch = "nixos-18.03"; };
+
   nixpkgs-nix-2  = nixpkgs-master.override { branch = "nix-2.0"; };
 
   allvm-tools = github { owner = "allvm"; repo = "allvm-tools"; branch = "master"; deepClone = true; };

@@ -53,6 +53,8 @@ let
     // (jobsFor "libgcc_s" nixpkgs-libgcc_s)
     // (jobsFor "sanitizers" nixpkgs-sanitizers)
     // (jobsFor "i686-musl" nixpkgs-i686-musl)
+    // (jobsFor "18.03" nixpkgs-18_03)
+    // (jobsFor "nixos-18.03" nixos-18_03-channel)
     #// (jobsFor "nix-2" nixpkgs-nix-2)
     // rec {
     #bootstrap-tools = {
