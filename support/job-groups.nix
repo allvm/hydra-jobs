@@ -224,7 +224,6 @@ rec {
     bloaty = all;
     brotli = all;
     curl = all;
-    ghc = ghcSupported;
     git = all;
     iproute = all;
     jq = all;
@@ -252,5 +251,13 @@ rec {
     xterm = all;
     xz = all;
     zsh = all;
+  };
+
+  ghcs = {
+    ghc = nativePlatforms;
+    haskell.packages.ghc822.ghc = nativePlatforms;
+    haskell.packages.ghc841.ghc = nativePlatforms;
+    haskell.packages.ghc822.hello = nativePlatforms;
+    haskell.packages.ghc841.hello = nativePlatforms;
   };
 }
