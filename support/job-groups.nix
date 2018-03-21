@@ -256,8 +256,11 @@ rec {
   ghcs = {
     ghc = nativePlatforms;
     haskell.packages.ghc822.ghc = nativePlatforms;
-    haskell.packages.ghc841.ghc = nativePlatforms;
     haskell.packages.ghc822.hello = nativePlatforms;
+    haskell.packages.ghc822.pandoc = nativePlatforms;
+
+    haskell.packages.ghc841.ghc = nativePlatforms;
     haskell.packages.ghc841.hello = nativePlatforms;
+    haskell.packages.ghc841.pandoc = nativePlatforms;
   };
 }
