@@ -109,5 +109,6 @@ in
     openblas = linux;
   };
 
+  ghcs = mapTestOn ghcs;
 }
 
