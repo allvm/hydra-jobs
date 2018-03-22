@@ -35,6 +35,16 @@ rec {
     # else if system == "x86_64-cygwin" then pkgs_x86_64_cygwin
     else abort "unsupported system type: ${system}";
 
+  # Define if not present, but defer to provided definitions
+  platformMatch = lib.meta.platformMatch or (
+    platform: elem: let
+      pattern =
+        if builtins.isString elem
+        then { system = elem; }
+        else { parsed = elem; };
+    in lib.matchAttrs pattern platform);
+
+
   # Given a list of 'meta.platforms'-style patterns, return the sublist of
   # `supportedSystems` containing systems that matches at least one of the given
   # patterns.
@@ -46,20 +56,17 @@ rec {
         supportedSystems;
     in metaPatterns: let
       anyMatch = platform:
-        lib.any (lib.meta.platformMatch platform) metaPatterns;
+        lib.any (platformMatch platform) metaPatterns;
       matchingPlatforms = lib.filter anyMatch supportedPlatforms;
     in map ({ system, ...}: system) matchingPlatforms;
 
 
-  forAllSupportedSystemsOld = systems: f:
+  forAllSupportedSystems = systems: f:
     genAttrs (filter (x: elem x supportedSystems) systems) f;
 
   # Generate attributes for all sytems matching at least one of the given
   # patterns
   forMatchingSystems = metaPatterns: genAttrs (supportedMatches metaPatterns);
-
-  # Compat
-  forAllSupportedSystems = if (lib.meta ? platformMatch) then forMatchingSystems else forAllSupportedSystemsOld;
 
   # testOn = systems: f: hydraJob' (f pkgs);
   /* Build a package on the given set of platforms.  The function `f'
@@ -68,7 +75,7 @@ rec {
      a derivation for each supported platform, i.e. ‘{ x86_64-linux =
      f pkgs_x86_64_linux; i686-linux = f pkgs_i686_linux; ... }’. */
   #testOn = systems: f: forAllSupportedSystems systems
-  testOn = systems: f: forAllSupportedSystems systems
+  testOn = systems: f: forMatchingSystems systems
     (system: hydraJob' (f (pkgsFor system)));
 
 
@@ -90,24 +97,12 @@ rec {
   packagePlatforms = mapAttrs (name: value:
     let res = builtins.tryEval (
       if isDerivation value then
-        value.meta.hydraPlatforms or
-        (if (lib.meta ? platformMatch) then (let
+        value.meta.hydraPlatforms or (let
             linuxDefaulted = value.meta.platforms or [ "x86_64-linux" ];
             pred = system: lib.any
-              (lib.meta.platformMatch (lib.systems.elaborate { inherit system; }))
+              (platformMatch (lib.systems.elaborate { inherit system; }))
               linuxDefaulted;
           in lib.filter pred supportedSystems)
-        else (let
-            raw = value.meta.platforms or [ "x86_64-linux" ];
-            toPattern = x: if builtins.isString x
-                           then { system = x; }
-                           else { parsed = x; };
-            uniform = map toPattern raw;
-            pred = hostPlatform:
-              lib.any (pat: lib.matchAttrs pat hostPlatform) uniform;
-            pred' = system: pred (lib.systems.elaborate { inherit system; });
-         in lib.filter pred' supportedSystems)
-        )
       else if value.recurseForDerivations or false || value.recurseForRelease or false then
         packagePlatforms value
       else
