@@ -54,6 +54,7 @@ let
     // (jobsFor "sanitizers" nixpkgs-sanitizers)
     // (jobsFor "i686-musl" nixpkgs-i686-musl)
     // (jobsFor "ghc-cross" nixpkgs-ghc-cross)
+    // (jobsFor "systemd" nixpkgs-systemd)
     // (jobsFor "18.03" nixpkgs-18_03)
     // (jobsFor "nixos-18.03" nixos-18_03-channel)
     #// (jobsFor "nix-2" nixpkgs-nix-2)
