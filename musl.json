@@ -1,0 +1,16 @@
+{
+    "enabled": 1,
+    "hidden": false,
+    "description": "Cross",
+    "nixexprinput": "src",
+    "nixexprpath": "projects/cross.nix",
+    "checkinterval": 300,
+    "schedulingshares": 100,
+    "enableemail": false,
+    "emailoverride": "",
+    "keepnr": 3,
+    "inputs": {
+        "src": { "type": "git", "value": "https://github.com/allvm/hydra-jobs", "emailresponsible": false },
+        "nixpkgs": { "type": "git", "value": "git://github.com/NixOS/nixpkgs.git release-17.09", "emailresponsible": false }
+    }
+}
