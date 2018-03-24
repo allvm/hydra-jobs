@@ -1,9 +1,9 @@
 {
     "enabled": 1,
     "hidden": false,
-    "description": "Cross",
+    "description": "musl",
     "nixexprinput": "src",
-    "nixexprpath": "projects/cross.nix",
+    "nixexprpath": "projects/musl.nix",
     "checkinterval": 300,
     "schedulingshares": 100,
     "enableemail": false,
