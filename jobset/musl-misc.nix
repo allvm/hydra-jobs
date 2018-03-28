@@ -39,6 +39,8 @@ in
     utillinux = linux;
     wirelesstools = linux;
 
+    man-db = linux;
+
     shadow = linux;
     kmod = linux;
     libuuid = linux;
@@ -100,6 +102,7 @@ in
   libs = mapTestOn {
     asio = linux;
     glib = linux;
+    libbsd = linux;
     libelf = linux;
     libnet  = linux;
     tbb = linux;
