@@ -93,6 +93,8 @@ in
 
     ruby = linux;
 
+    rust = linux;
+
     spidermonkey = linux;
     spidermonkey_52 = linux;
   };
