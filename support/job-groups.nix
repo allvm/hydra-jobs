@@ -227,6 +227,7 @@ rec {
     git = all;
     iproute = all;
     jq = all;
+    libiconv = all;
     links2 = all;
     linux = all;
     linuxPackages.cpupower = all;

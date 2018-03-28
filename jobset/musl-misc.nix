@@ -35,10 +35,23 @@ in
     libtirpc = linux;
     libusb = linux;
     libnl = linux;
+    netcat-openbsd = linux;
     utillinux = linux;
     wirelesstools = linux;
 
     systemd = linux;
+
+    e2fsprogs = linux;
+    gpgme = linux;
+    grub2 = linux;
+    libselinux = linux;
+    nilfs-utils = linux;
+    parted = linux;
+    udisks2 = linux;
+    xar = linux;
+    xfsprogs = linux;
+
+    qemu_test = linux;
   };
 
   desktop = mapTestOn {
@@ -54,6 +67,8 @@ in
 
     mesa = linux;
 
+    icewm = linux;
+
     xorg.xorgserver = linux;
     libglvnd = linux;
     libGL = linux;
@@ -64,7 +79,11 @@ in
 
     dbus = linux;
 
+    slim = linux;
+
     termite = linux;
+
+    gobjectIntrospection = linux;
   };
 
 
