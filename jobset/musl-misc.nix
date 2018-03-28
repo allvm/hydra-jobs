@@ -55,6 +55,8 @@ in
     mesa = linux;
 
     xorg.xorgserver = linux;
+    libglvnd = linux;
+    libGL = linux;
 
     pulseaudioLight = linux;
     # pulseaudioFull = linux;
