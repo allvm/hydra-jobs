@@ -47,6 +47,7 @@ let
     // (jobsFor "18.03" nixpkgs-18_03)
     // (jobsFor "nixos-18.03" nixos-18_03-channel)
     // (jobsFor "nixos-musl" nixos-musl)
+    // (jobsFor "nixos-musl-wip" nixos-musl-wip)
     #// (jobsFor "nix-2" nixpkgs-nix-2)
     // rec {
     #bootstrap-tools = {
