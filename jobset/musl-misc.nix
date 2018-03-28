@@ -39,8 +39,16 @@ in
     utillinux = linux;
     wirelesstools = linux;
 
+    shadow = linux;
+    kmod = linux;
+    libuuid = linux;
+
+    iputils = linux;
+
     systemd = linux;
 
+    btrfs-progs = linux;
+    dmraid = linux;
     e2fsprogs = linux;
     gpgme = linux;
     grub2 = linux;
@@ -52,6 +60,8 @@ in
     xfsprogs = linux;
 
     qemu_test = linux;
+
+    zfs = linux;
   };
 
   desktop = mapTestOn {
@@ -90,6 +100,7 @@ in
   libs = mapTestOn {
     asio = linux;
     glib = linux;
+    libelf = linux;
     libnet  = linux;
     tbb = linux;
   };
