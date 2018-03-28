@@ -38,7 +38,7 @@ let
     // (jobsFor "dtz" nixpkgs-dtz)
    ## // (jobsFor "musl-bootstrap" nixpkgs-musl-native-bootstrap)
    ## // (jobsFor "musl-malloc-kludge" nixpkgs-musl-malloc-kludge)
-   ## // (jobsFor "musl-malloc-kludge-merged" nixpkgs-musl-malloc-kludge-merged)
+    // (jobsFor "musl-malloc-kludge-merged" nixpkgs-musl-malloc-kludge-merged)
    ## // (jobsFor "libgcc_s" nixpkgs-libgcc_s)
    ## // (jobsFor "sanitizers" nixpkgs-sanitizers)
     // (jobsFor "i686-musl" nixpkgs-i686-musl)
