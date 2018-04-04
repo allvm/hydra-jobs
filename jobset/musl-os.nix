@@ -8,7 +8,7 @@ let
   #  import fn ({ inherit localSystem; } //args);
 
   # For now, these tests have localSystem hardcoded via musl import
-  callTest = fn: args: fn args;
+  callTest = fn: args: import fn args;
 
   nixos = nixpkgs + "/nixos";
 
