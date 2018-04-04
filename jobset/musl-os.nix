@@ -4,8 +4,11 @@ let
   lib = import (nixpkgs + "/lib");
   localSystem.config = "x86_64-unknown-linux-musl";
 
-  callTest = fn: args:
-    import fn ({ inherit localSystem; } //args);
+  #callTest = fn: args:
+  #  import fn ({ inherit localSystem; } //args);
+
+  # For now, these tests have localSystem hardcoded via musl import
+  callTest = fn: args: fn args;
 
   nixos = nixpkgs + "/nixos";
 
