@@ -25,6 +25,14 @@ let
   jobsFor = name: repo:
     /*(crossMuslJobs name repo) //*/ (nativeJobs name repo);
 
+  osJobsFor = name: repo: {
+    "${name}" = {
+      path = "jobset/musl-os.nix";
+      inputs.nixpkgs = repo;
+      shares = 250;
+    };
+  };
+
   writeSpec = import ./common.nix {
     inherit (pkgs) lib runCommand;
     inherit declInput jobsetsAttrs;
@@ -49,6 +57,8 @@ let
     // (jobsFor "nixos-musl" nixos-musl)
     // (jobsFor "nixos-musl-wip" nixos-musl-wip)
     #// (jobsFor "nix-2" nixpkgs-nix-2)
+    // (osJobsFor "os-musl" nixos-musl)
+    // (osJobsFor "os-musl-wip" nixos-musl-wip)
     // rec {
     #bootstrap-tools = {
     #  keep = 2;
