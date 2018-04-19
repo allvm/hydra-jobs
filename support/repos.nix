@@ -24,6 +24,7 @@ in rec {
   nixpkgs-systemd = nixpkgs-dtz.override { branch = "fix/systemd-musl"; };
   nixos-musl = nixpkgs-dtz.override { branch = "experimental/nixos-musl"; };
   nixos-musl-wip = nixpkgs-dtz.override { branch = "experimental/nixos-musl-wip"; };
+  nixpkgs-dtz-18.03 = nixpkgs-dtz.override { branch = "dtz-18.03"; };
 
   # Not the channel, but channel is tagged from this when tests pass
   nixpkgs-18_03 = nixpkgs-master.override { branch = "release-18.03"; };
