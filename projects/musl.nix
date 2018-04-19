@@ -44,6 +44,7 @@ let
    ## // (jobsFor "cleanup" nixpkgs-musl-cleanup)
     // (jobsFor "dtz-staging" nixpkgs-dtz-staging)
     // (jobsFor "dtz" nixpkgs-dtz)
+    // (jobsFor "dtz-18.03" nixpkgs-dtz-18_03)
    ## // (jobsFor "musl-bootstrap" nixpkgs-musl-native-bootstrap)
    ## // (jobsFor "musl-malloc-kludge" nixpkgs-musl-malloc-kludge)
     // (jobsFor "musl-malloc-kludge-merged" nixpkgs-musl-malloc-kludge-merged)
