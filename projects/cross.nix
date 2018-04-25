@@ -54,6 +54,8 @@ let
     #// (jobsFor "systemd" nixpkgs-systemd)
     // (jobsFor "18.03" nixpkgs-18_03)
     // (jobsFor "nixos-18.03" nixos-18_03-channel)
+
+    // (jobsFor "musl-iconv" nixpkgs-musl-iconv)
     #// (jobsFor "nix-2" nixpkgs-nix-2)
     // rec {
     #bootstrap-tools = {

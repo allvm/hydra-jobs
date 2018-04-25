@@ -57,6 +57,7 @@ let
     // (jobsFor "nixos-18.03" nixos-18_03-channel)
     // (jobsFor "nixos-musl" nixos-musl)
     // (jobsFor "nixos-musl-wip" nixos-musl-wip)
+    // (jobsFor "musl-iconv" nixpkgs-musl-iconv)
     #// (jobsFor "nix-2" nixpkgs-nix-2)
     // (osJobsFor "os-musl" nixos-musl)
     // (osJobsFor "os-musl-wip" nixos-musl-wip)
