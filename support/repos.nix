@@ -22,6 +22,7 @@ in rec {
   nixpkgs-i686-musl = nixpkgs-dtz.override { branch = "feature/i686-musl"; };
   nixpkgs-ghc-cross = nixpkgs-dtz.override { branch = "fix/ghc-cross-musl"; };
   nixpkgs-systemd = nixpkgs-dtz.override { branch = "fix/systemd-musl"; };
+  nixpkgs-musl-iconv = nixpkgs-dtz.override { branch = "fix/musl-provide-iconv-tool"; };
   nixos-musl = nixpkgs-dtz.override { branch = "experimental/nixos-musl"; };
   nixos-musl-wip = nixpkgs-dtz.override { branch = "experimental/nixos-musl-wip"; };
   nixpkgs-dtz-18_03 = nixpkgs-dtz.override { branch = "dtz-18.03"; };
