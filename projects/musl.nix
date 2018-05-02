@@ -58,6 +58,7 @@ let
     // (jobsFor "nixos-musl" nixos-musl)
     // (jobsFor "nixos-musl-wip" nixos-musl-wip)
     // (jobsFor "musl-iconv" nixpkgs-musl-iconv)
+    // (jobsFor "gcc8" nixpkgs-gcc8)
     #// (jobsFor "nix-2" nixpkgs-nix-2)
     // (osJobsFor "os-musl" nixos-musl)
     // (osJobsFor "os-musl-wip" nixos-musl-wip)
