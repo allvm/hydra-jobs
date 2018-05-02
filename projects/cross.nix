@@ -56,6 +56,7 @@ let
     // (jobsFor "nixos-18.03" nixos-18_03-channel)
 
     // (jobsFor "musl-iconv" nixpkgs-musl-iconv)
+    // (jobsFor "gcc8" nixpkgs-gcc8)
     #// (jobsFor "nix-2" nixpkgs-nix-2)
     // rec {
     #bootstrap-tools = {
