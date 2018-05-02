@@ -202,10 +202,13 @@ rec {
     gcc5 = all;
     gcc6 = all;
     gcc7 = all;
+    gcc8 = all;
     clang_4 = all;
     clang_5 = all;
+    clang_6 = all;
     llvm_4 = all;
     llvm_5 = all;
+    llvm_6 = all;
   };
 
   servers = {
