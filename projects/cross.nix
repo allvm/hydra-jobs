@@ -57,7 +57,6 @@ let
 
     // (jobsFor "musl-iconv" nixpkgs-musl-iconv)
     // (jobsFor "gcc8" nixpkgs-gcc8)
-    #// (jobsFor "nix-2" nixpkgs-nix-2)
     // rec {
     #bootstrap-tools = {
     #  keep = 2;

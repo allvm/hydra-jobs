@@ -94,9 +94,6 @@ let
           with-llvm6 = recursiveUpdate base {
             inputs.nixpkgs = nixpkgs-llvm6;
           };
-          with-nix-2 = recursiveUpdate base {
-            inputs.nixpkgs  = nixpkgs-nix-2;
-          };
         };
       in pkgs.lib.mapAttrs (_: x: genJobs x) {
         default = mkJob {};
