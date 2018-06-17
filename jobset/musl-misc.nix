@@ -21,6 +21,7 @@ in
     cyrus_sasl = linux;
     gnutls = linux;
     ldns = linux;
+    libgcrypt = linux;
     nettle = linux;
     openssh = linux;
     openssl = linux;
