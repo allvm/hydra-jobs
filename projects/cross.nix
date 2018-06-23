@@ -45,7 +45,7 @@ let
     {}
     #// (jobsFor "old" nixpkgs-musl)
     // (jobsFor "cleanup" nixpkgs-musl-cleanup)
-    #// (jobsFor "dtz-staging" nixpkgs-dtz-staging)
+    // (jobsFor "dtz-staging" nixpkgs-dtz-staging)
     #// (jobsFor "dtz" nixpkgs-dtz)
     #// (jobsFor "libgcc_s" nixpkgs-libgcc_s)
     #// (jobsFor "sanitizers" nixpkgs-sanitizers)
@@ -58,6 +58,9 @@ let
 
     // (jobsFor "musl-iconv" nixpkgs-musl-iconv)
     // (jobsFor "gcc8" nixpkgs-gcc8)
+
+    // (jobsFor "nixos-musl" nixos-musl)
+
     // rec {
     #bootstrap-tools = {
     #  keep = 2;
