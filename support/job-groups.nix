@@ -257,11 +257,10 @@ rec {
     zsh = all;
   };
 
-  ghcs = {
+  ghcs = let ghcPkgs = { ghc = nativePlatforms; hello = nativePlatforms; }; in {
     ghc = nativePlatforms;
-    haskell.packages.ghc822.ghc = nativePlatforms;
-    haskell.packages.ghc841.ghc = nativePlatforms;
-    haskell.packages.ghc822.hello = nativePlatforms;
-    haskell.packages.ghc841.hello = nativePlatforms;
+    haskell.packages.ghc822 = ghcPkgs;
+    haskell.packages.ghc841 = ghcPkgs;
+    haskell.packages.ghc843 = ghcPkgs;
   };
 }
