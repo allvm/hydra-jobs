@@ -43,6 +43,13 @@ let
         description = "ALLVM Tools (pinned nixpkgs)";
         shares = 500;
       };
+      debug = mkJob {
+        path = "default.nix";
+        input = "allvm-tools-src";
+        inputs.allvm-tools-src = allvm-tools-debug;
+        description = "ALLVM Tools (pinned nixpkgs, debugging hydra)";
+        shares = 500;
+      };
       # XXX: This one is not like the others:
       release = mkJob {
         path = "nix/release.nix";

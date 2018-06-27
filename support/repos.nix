@@ -35,6 +35,7 @@ in rec {
   nixos-18_03-channel = github { owner = "NixOS"; repo = "nixpkgs-channels"; branch = "nixos-18.03"; };
 
   allvm-tools = github { owner = "allvm"; repo = "allvm-tools"; branch = "master"; deepClone = true; };
+  allvm-tools-debug = allvm-tools.override { branch = "debug/hydra-git-fetch"; };
   allvm-tools-llvm5 = allvm-tools.override { branch = "experimental/llvm-5"; };
   allvm-tools-llvm6 = allvm-tools.override { branch = "experimental/llvm-6"; };
   allvm-analysis = github { owner = "allvm"; repo = "allplay"; branch = "master"; deepClone = true; };
