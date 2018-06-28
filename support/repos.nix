@@ -26,6 +26,7 @@ in rec {
   nixos-musl = nixpkgs-dtz.override { branch = "experimental/nixos-musl"; };
   nixos-musl-wip = nixpkgs-dtz.override { branch = "experimental/nixos-musl-wip"; };
   nixpkgs-dtz-18_03 = nixpkgs-dtz.override { branch = "dtz-18.03"; };
+  nixpkgs-musl-git = nixpkgs-dtz.override { branch = "experimental/musl-git"; };
 
   nixpkgs-gcc8 = nixpkgs-master.override { branch = "gcc8"; };
 
